@@ -26,5 +26,8 @@ class MainCheats : Fragment() {
         binding.descriptionbt.setOnClickListener {
             findNavController().navigate(R.id.action_mainCheats_to_mainDescription)
         }
+        binding.profileBt.setOnClickListener {
+            findNavController().navigate(R.id.action_mainCheats_to_profile)
+        }
     }
 }

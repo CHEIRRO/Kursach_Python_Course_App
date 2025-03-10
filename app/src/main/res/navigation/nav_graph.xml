@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_mainPrograms_to_mainDescription"
             app:destination="@id/mainDescription" />
+        <action
+            android:id="@+id/action_mainPrograms_to_profile"
+            app:destination="@id/profile" />
     </fragment>
     <fragment
         android:id="@+id/mainCheats"
@@ -46,6 +49,9 @@
         <action
             android:id="@+id/action_mainCheats_to_mainDescription"
             app:destination="@id/mainDescription" />
+        <action
+            android:id="@+id/action_mainCheats_to_profile"
+            app:destination="@id/profile" />
     </fragment>
     <fragment
         android:id="@+id/mainDescription"
@@ -57,6 +63,18 @@
             app:destination="@id/mainCheats" />
         <action
             android:id="@+id/action_mainDescription_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
+        <action
+            android:id="@+id/action_mainDescription_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.kursach_course.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_mainPrograms"
             app:destination="@id/mainPrograms" />
     </fragment>
 </navigation>
