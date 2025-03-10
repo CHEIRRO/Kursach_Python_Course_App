@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,225 +6,227 @@
     android:background="#FFFFFF"
     tools:context=".Profile">
 
-    <!-- Верхний фон с градиентом -->
     <View
         android:id="@+id/topBackground"
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:background="@drawable/profile_background"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Кнопка "Назад" -->
     <ImageButton
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_arrow_back"
         android:contentDescription="Back"
-        app:tint="@android:color/black"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@android:color/black" />
 
-    <!-- Заголовок "My Profile" -->
     <TextView
         android:id="@+id/profileTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="My Profile"
-        android:textSize="22sp"
-        android:textStyle="bold"
+        android:textAppearance="@style/some_id"
         android:textColor="@android:color/black"
-        app:layout_constraintStart_toEndOf="@id/backButton"
-        app:layout_constraintTop_toTopOf="@id/backButton"
-        android:layout_marginStart="8dp" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/topBackground"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintTop_toTopOf="@+id/topBackground"
+        app:layout_constraintVertical_bias="0.358"
+        tools:ignore="MissingConstraints" />
 
-    <!-- Карточка профиля -->
     <androidx.cardview.widget.CardView
         android:id="@+id/profileCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/topBackground"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/topBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="16dp"
-            android:gravity="center_vertical">
+            tools:layout_editor_absoluteX="30dp"
+            tools:layout_editor_absoluteY="117dp">
 
             <ImageView
                 android:id="@+id/profileImage"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_profile"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_profile" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp">
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/profileName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cheirro"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/profileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="code.hunny40@gmail.com"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Секция настроек -->
+
     <TextView
         android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/profileCard"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="20dp"
+        android:text="Settings"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileCard" />
 
-    <!-- Кнопка Уведомлений -->
     <LinearLayout
         android:id="@+id/notificationsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:background="?attr/selectableItemBackground"
-        app:layout_constraintTop_toBottomOf="@id/settingsTitle"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/settingsTitle">
+
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_notifications"
+            android:src="@mipmap/ic_notifications"
             app:tint="@android:color/black" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Notifications"
-            android:textSize="14sp"
-            android:textColor="@android:color/black"
             android:layout_marginStart="16dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Notifications"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_right"
-            app:tint="@android:color/darker_gray" />
+            android:src="@drawable/ic_arrow_right" />
+
     </LinearLayout>
 
-    <!-- Раздел Extra -->
     <TextView
         android:id="@+id/extraTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Extra"
         android:textSize="16sp"
-        android:textColor="@android:color/darker_gray"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/notificationsButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notificationsButton" />
 
-    <!-- Кнопка Help & FAQ -->
     <LinearLayout
         android:id="@+id/helpButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:background="?attr/selectableItemBackground"
-        app:layout_constraintTop_toBottomOf="@id/extraTitle"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/extraTitle">
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_help"
+            android:src="@mipmap/ic_help"
             app:tint="@android:color/black" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Help & FAQ"
-            android:textSize="14sp"
-            android:textColor="@android:color/black"
             android:layout_marginStart="16dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Help &amp; FAQ"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_right"
-            app:tint="@android:color/darker_gray" />
+            android:src="@drawable/ic_arrow_right" />
     </LinearLayout>
 
-    <!-- Кнопка Logout -->
     <LinearLayout
         android:id="@+id/logoutButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:background="?attr/selectableItemBackground"
-        app:layout_constraintTop_toBottomOf="@id/helpButton"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/helpButton">
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_logout"
+            android:src="@mipmap/ic_logout"
             app:tint="@android:color/black" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:textSize="14sp"
-            android:textColor="@android:color/black"
             android:layout_marginStart="16dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Logout"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_right"
-            app:tint="@android:color/darker_gray" />
+            android:src="@drawable/ic_arrow_right" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,11 +12,6 @@
         android:layout_height="match_parent"
         android:backgroundTint="@color/black">
 
-        <!-- Адаптивное изображение с пропорциями 412:192 -->
-
-        <!-- Заголовок, выровненный по центру изображения -->
-
-        <!-- Адаптивный LinearLayout с кнопками -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
@@ -37,7 +32,6 @@
             android:layout_marginTop="48dp"
             android:layout_marginEnd="352dp"
             android:background="@null"
-
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_profile"
             app:layout_constraintEnd_toEndOf="parent"
