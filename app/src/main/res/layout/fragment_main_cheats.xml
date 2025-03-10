@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainCheats">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/black">
+
+        <!-- Адаптивное изображение с пропорциями 412:192 -->
+
+        <!-- Заголовок, выровненный по центру изображения -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/back"
+            app:layout_constraintDimensionRatio="412:192"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Python"
+            android:textAppearance="@style/some_id"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="@id/imageView" />
+
+        <!-- Адаптивный LinearLayout с кнопками -->
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="379dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_text"
+            app:layout_constraintVertical_bias="0.578">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/programbt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_border_white"
+                android:backgroundTint="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Programs"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cheatsbt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_border_black"
+                android:backgroundTint="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Cheats"
+                android:textColor="#000000"
+                android:textSize="11sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/descriptionbt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_border_white"
+                android:backgroundTint="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Description"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#F6F0FF"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Array"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton6"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Dictionary"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="File Handling"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton12"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Function"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton8"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Dictionary"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton9"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Dictionary"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton10"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Dictionary"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton11"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Dictionary"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton13"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Dictionary"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myButton14"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_background_for_cheats"
+                android:text="Dictionary"
+                android:textColor="@android:color/black"
+                android:drawableEnd="@drawable/ic_arrow_right"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
+
+

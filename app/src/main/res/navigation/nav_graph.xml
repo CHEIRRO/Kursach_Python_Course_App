@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomFragment">
+
+    <fragment
+        android:id="@+id/welcomFragment"
+        android:name="com.example.kursach_course.WelcomFragment"
+        android:label="fragment_welcom"
+        tools:layout="@layout/fragment_welcom" >
+        <action
+            android:id="@+id/action_welcomFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.kursach_course.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_mainCourseFragment"
+            app:destination="@id/mainPrograms" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainPrograms"
+        android:name="com.example.kursach_course.MainPrograms"
+        android:label="fragment_main_course"
+        tools:layout="@layout/fragment_main_programs" >
+        <action
+            android:id="@+id/action_mainPrograms_to_mainCheats"
+            app:destination="@id/mainCheats" />
+        <action
+            android:id="@+id/action_mainPrograms_to_mainDescription"
+            app:destination="@id/mainDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainCheats"
+        android:name="com.example.kursach_course.MainCheats"
+        android:label="fragment_main_cheats"
+        tools:layout="@layout/fragment_main_cheats" >
+        <action
+            android:id="@+id/action_mainCheats_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
+        <action
+            android:id="@+id/action_mainCheats_to_mainDescription"
+            app:destination="@id/mainDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainDescription"
+        android:name="com.example.kursach_course.MainDescription"
+        android:label="fragment_main_description"
+        tools:layout="@layout/fragment_main_description" >
+        <action
+            android:id="@+id/action_mainDescription_to_mainCheats"
+            app:destination="@id/mainCheats" />
+        <action
+            android:id="@+id/action_mainDescription_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
+    </fragment>
+</navigation>

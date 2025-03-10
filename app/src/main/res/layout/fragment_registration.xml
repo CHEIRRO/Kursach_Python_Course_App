@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".RegistrationFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <View
+            android:id="@+id/wave1"
+            android:layout_width="match_parent"
+            android:layout_height="667dp"
+            android:background="@drawable/wave_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/wave2"
+            android:layout_width="match_parent"
+            android:layout_height="703dp"
+            android:background="@drawable/wave_background_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/wave3"
+            android:layout_width="match_parent"
+            android:layout_height="743dp"
+            android:background="@drawable/wave_background_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Текст "PASSWORD" -->
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="354dp"
+            android:layout_height="65dp"
+            android:layout_marginBottom="120dp"
+            android:backgroundTint="#300E74"
+            android:text="Yeeap"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordField"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="EMAIL"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/emailField"
+            app:layout_constraintStart_toStartOf="@+id/emailField" />
+
+        <EditText
+            android:id="@+id/emailField"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="272dp"
+            android:background="@drawable/input_bg"
+            android:paddingHorizontal="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#E0E0E0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/wave1" />
+
+        <TextView
+            android:id="@+id/passwordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="PASSWORD"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/emailField"
+            app:layout_constraintTop_toBottomOf="@id/emailField" />
+
+        <EditText
+            android:id="@+id/passwordField"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_bg"
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#E0E0E0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
+
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:text="Sign In"
+            android:textAppearance="@style/some_id"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/wave3"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
