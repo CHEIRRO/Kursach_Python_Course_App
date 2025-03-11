@@ -6,23 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.kursach_course.databinding.FragmentRegistrationBinding
-import com.example.kursach_course.databinding.FragmentWelcomBinding
+import com.example.kursach_course.databinding.FragmentSearchSystemFromProgramsBinding
 
-class WelcomFragment : Fragment() {
-    private lateinit var binding: FragmentWelcomBinding
+class SearchSystemFromPrograms : Fragment() {
+private lateinit var binding:FragmentSearchSystemFromProgramsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentWelcomBinding.inflate(inflater)
+    ): View? {
+        binding = FragmentSearchSystemFromProgramsBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.welBtNext.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomFragment_to_login)
+        binding.backButton.setOnClickListener {
+            findNavController().navigate(R.id.action_searchSystemFromPrograms_to_mainPrograms)
         }
     }
+
 }

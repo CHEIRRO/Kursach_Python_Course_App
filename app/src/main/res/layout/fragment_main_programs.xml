@@ -21,9 +21,9 @@
             android:scaleType="fitXY"
             android:src="@drawable/back"
             app:layout_constraintDimensionRatio="412:192"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/profileBt"
@@ -117,15 +117,17 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="209dp"
+            android:layout_height="684dp"
+
             android:background="#F6F0FF"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-            app:layout_constraintHorizontal_weight="1">
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/myButton5"
@@ -170,15 +172,16 @@
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="203dp"
+            android:layout_height="687dp"
             android:background="#F6F0FF"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-            app:layout_constraintHorizontal_weight="1">
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/myButton8"
@@ -210,6 +213,7 @@
                 android:background="@drawable/button_background"
                 android:text="Formula"
                 android:textColor="@android:color/black" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/myButton11"
                 android:layout_width="match_parent"
@@ -220,6 +224,33 @@
                 android:text="Lists"
                 android:textColor="@android:color/black" />
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="411dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="1dp"
+            android:background="#F6F0FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/searchButton"
+                android:layout_width="139dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@null"
+                android:drawableStart="@mipmap/ic_search"
+                android:drawablePadding="2dp"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="Search"
+                android:textColor="#757575" />
+
+
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

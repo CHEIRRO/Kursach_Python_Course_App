@@ -11,8 +11,8 @@
         android:label="fragment_welcom"
         tools:layout="@layout/fragment_welcom" >
         <action
-            android:id="@+id/action_welcomFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
+            android:id="@+id/action_welcomFragment_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -20,8 +20,8 @@
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registrationFragment_to_mainCourseFragment"
-            app:destination="@id/mainPrograms" />
+            android:id="@+id/action_registrationFragment_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/mainPrograms"
@@ -37,6 +37,12 @@
         <action
             android:id="@+id/action_mainPrograms_to_profile"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_mainPrograms_to_programsArray"
+            app:destination="@id/programsArray" />
+        <action
+            android:id="@+id/action_mainPrograms_to_searchSystemFromPrograms"
+            app:destination="@id/searchSystemFromPrograms" />
     </fragment>
     <fragment
         android:id="@+id/mainCheats"
@@ -52,6 +58,9 @@
         <action
             android:id="@+id/action_mainCheats_to_profile"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_mainCheats_to_cheatsInstallingPython"
+            app:destination="@id/cheatsInstallingPython" />
     </fragment>
     <fragment
         android:id="@+id/mainDescription"
@@ -75,6 +84,37 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profile_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
+    </fragment>
+    <fragment
+        android:id="@+id/programsArray"
+        android:name="com.example.kursach_course.ProgramsArray"
+        android:label="fragment_programs_array"
+        tools:layout="@layout/fragment_programs_array" />
+    <fragment
+        android:id="@+id/cheatsInstallingPython"
+        android:name="com.example.kursach_course.CheatsInstallingPython"
+        android:label="fragment_cheats_installing_python"
+        tools:layout="@layout/fragment_cheats_installing_python" />
+    <fragment
+        android:id="@+id/searchSystemFromPrograms"
+        android:name="com.example.kursach_course.SearchSystemFromPrograms"
+        android:label="fragment_search_system_from_programs"
+        tools:layout="@layout/fragment_search_system_from_programs" >
+        <action
+            android:id="@+id/action_searchSystemFromPrograms_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.kursach_course.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_login_to_mainPrograms"
             app:destination="@id/mainPrograms" />
     </fragment>
 </navigation>

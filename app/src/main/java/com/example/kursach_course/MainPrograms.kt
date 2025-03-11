@@ -29,6 +29,9 @@ class MainPrograms : Fragment() {
         binding.profileBt.setOnClickListener {
             findNavController().navigate(R.id.action_mainPrograms_to_profile)
         }
+        binding.searchButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPrograms_to_searchSystemFromPrograms)
+        }
     }
 
 }

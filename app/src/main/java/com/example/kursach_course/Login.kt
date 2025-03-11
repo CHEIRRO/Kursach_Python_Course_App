@@ -5,29 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.navigation.fragment.findNavController
-import com.example.kursach_course.databinding.FragmentRegistrationBinding
+import com.example.kursach_course.databinding.FragmentLoginBinding
 
-class RegistrationFragment : Fragment() {
-    private lateinit var binding: FragmentRegistrationBinding
+class Login : Fragment() {
+private lateinit var binding:FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentRegistrationBinding.inflate(inflater)
+    ): View? {
+        binding = FragmentLoginBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btNext.setOnClickListener {
-            findNavController().navigate(R.id.action_registrationFragment_to_login)
+            findNavController().navigate(R.id.action_login_to_mainPrograms)
         }
         binding.myButton.setOnClickListener {
-            findNavController().navigate(R.id.action_registrationFragment_to_login)
+            findNavController().navigate(R.id.action_login_to_registrationFragment)
         }
     }
-
-
 
 }
