@@ -6,32 +6,28 @@
     android:padding="16dp"
     android:background="#FFFFFF">
 
-    <!-- Кнопка "Назад" -->
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="46dp"
         android:layout_height="47dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Back"
         android:src="@mipmap/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <!-- Поле ввода текста -->
     <EditText
         android:id="@+id/searchInput"
         android:layout_width="250dp"
         android:layout_height="47dp"
         android:background="@null"
-        android:hint="Search"
+        android:hint="@string/search"
         android:imeOptions="actionSearch"
         android:inputType="text"
         android:maxLines="1"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:textColorHint="#808080"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/divider"
@@ -40,7 +36,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <!-- Вертикальная черта -->
     <View
         android:id="@+id/divider"
         android:layout_width="1dp"
@@ -51,12 +46,11 @@
         app:layout_constraintEnd_toStartOf="@id/clearButton"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Кнопка "Clear" (TextView) -->
     <TextView
         android:id="@+id/clearButton"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:text="Clear"
+        android:text="@string/clear"
         android:textSize="16sp"
         android:textColor="@android:color/black"
         android:gravity="center"

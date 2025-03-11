@@ -44,7 +44,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
-            android:text="Python"
+            android:text="@string/python"
             android:textAppearance="@style/some_id"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/imageView"
@@ -72,7 +72,7 @@
                 android:backgroundTint="@null"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="Programs"
+                android:text="@string/programs"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
 
@@ -90,7 +90,7 @@
                 android:backgroundTint="@null"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="Cheats"
+                android:text="@string/cheats"
                 android:textColor="#000000"
                 android:textSize="11sp" />
 
@@ -108,7 +108,7 @@
                 android:backgroundTint="@null"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="Description"
+                android:text="@string/description"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
 
@@ -132,7 +132,8 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Array"
+                android:text="@string/installing_python"
+
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -143,7 +144,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Dictionary"
+                android:text="@string/first_steps"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -154,7 +155,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="File Handling"
+                android:text="@string/basics"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -165,7 +166,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Function"
+                android:text="@string/operators_and_expressions"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -176,7 +177,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Dictionary"
+                android:text="@string/control_flow"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -187,7 +188,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Dictionary"
+                android:text="@string/functions"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -198,7 +199,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Dictionary"
+                android:text="@string/modules"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -209,7 +210,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Dictionary"
+                android:text="@string/data_structure"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -220,7 +221,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Dictionary"
+                android:text="@string/object_oriented_programming"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
 
@@ -231,7 +232,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/button_background_for_cheats"
-                android:text="Dictionary"
+                android:text="@string/input_output"
                 android:textColor="@android:color/black"
                 android:drawableEnd="@drawable/ic_arrow_right"/>
         </LinearLayout>

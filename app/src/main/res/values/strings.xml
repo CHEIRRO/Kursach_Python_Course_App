@@ -1,5 +1,71 @@
 <resources>
     <string name="app_name">Kursach_course</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ready_to_study">Ready to study?</string>
+    <string name="yeeap">Yeeap</string>
+    <string name="codeboost">CodeBoost</string>
+    <string name="login">LOGIN</string>
+    <string name="create_account">Create account</string>
+    <string name="email">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="repeat_password">REPEAT PASSWORD</string>
+    <string name="sign_in">Sign In</string>
+    <string name="have_an_account_enter">Have an account? Enter</string>
+    <string name="name">NAME</string>
+    <string name="sign_in_large">SIGN IN</string>
+    <string name="search">Search</string>
+    <string name="clear">Clear</string>
+    <string name="python">Python</string>
+    <string name="programs">Programs</string>
+    <string name="cheats">Cheats</string>
+    <string name="description">Description</string>
+    <string name="array">Array</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="file_handling">File Handling</string>
+    <string name="function">Function</string>
+    <string name="basic">Basic</string>
+    <string name="exception_handling">Exception Handling</string>
+    <string name="formula">Formula</string>
+    <string name="lists">Lists</string>
+    <string name="array_example">Array Example</string>
+    <string name="add_two_matrix_using_list_comprehensions">Add Two Matrix using List Comprehensions</string>
+    <string name="add_two_matrix">Add Two Matrix</string>
+    <string name="find_closest_value_of_a_number_in_an_array">Find Closest value of a number in an Array</string>
+    <string name="matrix_multiplication">Matrix Multiplication</string>
+    <string name="matrix_subtraction">Matrix Subtraction</string>
+    <string name="enter_the_first_missing_value">Enter the first missing value</string>
+    <string name="code_snippet"># Creating an array
+    array = _____
+
+    # Inserting values in the Array
+    array.append(___)
+    array.append(___)
+    array.append(___)
+
+    print("Elements of an Array: "+str(array))
+
+    # Changing the value of array[0]
+    array[0] = __
+    print("Elements of an Array after changes: "+str(array))
+
+    print("First Element of an Array: "+str(array[0]))</string>
+    <string name="enter_the_second_missing_value">Enter the second missing value</string>
+    <string name="enter_the_third_missing_value">Enter the third missing value</string>
+    <string name="check">Check</string>
+    <string name="my_profile">My Profile</string>
+    <string name="settings">Settings</string>
+    <string name="notifications">Notifications</string>
+    <string name="extra">Extra</string>
+    <string name="help_amp_faq"><![CDATA[Help & FAQ]]></string>
+    <string name="logout">Logout</string>
+    <string name="installing_python">Installing Python</string>
+    <string name="first_steps">First steps</string>
+    <string name="basics">Basics</string>
+    <string name="operators_and_expressions">Operators and Expressions</string>
+    <string name="control_flow">Control flow</string>
+    <string name="functions">Functions</string>
+    <string name="modules">Modules</string>
+    <string name="data_structure">Data Structure</string>
+    <string name="object_oriented_programming">Object Oriented Programming</string>
+    <string name="input_output">Input Output</string>
+
 </resources>

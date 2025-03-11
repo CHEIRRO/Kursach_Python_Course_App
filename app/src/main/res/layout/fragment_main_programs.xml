@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:backgroundTint="@color/black">
 
-        <!-- Адаптивное изображение с пропорциями 412:192 -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
@@ -32,7 +31,6 @@
             android:layout_marginTop="48dp"
             android:layout_marginEnd="352dp"
             android:background="@null"
-
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_profile"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +43,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
-            android:text="Python"
+            android:text="@string/python"
             android:textAppearance="@style/some_id"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/imageView"
@@ -73,7 +71,7 @@
                 android:backgroundTint="@null"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="Programs"
+                android:text="@string/programs"
                 android:textColor="#000000"
                 android:textSize="11sp" />
 
@@ -91,7 +89,7 @@
                 android:backgroundTint="@null"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="Cheats"
+                android:text="@string/cheats"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
 
@@ -109,7 +107,7 @@
                 android:backgroundTint="@null"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="Description"
+                android:text="@string/description"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
 
@@ -119,7 +117,6 @@
             android:id="@+id/linearLayout2"
             android:layout_width="209dp"
             android:layout_height="684dp"
-
             android:background="#F6F0FF"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -130,13 +127,13 @@
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/myButton5"
+                android:id="@+id/ArrayBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Array"
+                android:text="@string/array"
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -146,7 +143,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Dictionary"
+                android:text="@string/dictionary"
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -156,7 +153,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="File Handling"
+                android:text="@string/file_handling"
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -166,7 +163,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Function"
+                android:text="@string/function"
                 android:textColor="@android:color/black" />
         </LinearLayout>
 
@@ -190,7 +187,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Basic"
+                android:text="@string/basic"
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -200,8 +197,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Exception
-                Handling"
+                android:text="@string/exception_handling"
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -211,7 +207,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Formula"
+                android:text="@string/formula"
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -221,7 +217,7 @@
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Lists"
+                android:text="@string/lists"
                 android:textColor="@android:color/black" />
         </LinearLayout>
 
@@ -246,7 +242,7 @@
                 android:drawablePadding="2dp"
                 android:gravity="center_vertical"
                 android:padding="10dp"
-                android:text="Search"
+                android:text="@string/search"
                 android:textColor="#757575" />
 
 

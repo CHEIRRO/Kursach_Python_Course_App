@@ -22,7 +22,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Back"
         android:src="@mipmap/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="My Profile"
+        android:text="@string/my_profile"
         android:textAppearance="@style/some_id"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -105,8 +104,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="Settings"
-        android:textSize="20dp"
+        android:text="@string/settings"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileCard" />
@@ -138,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="Notifications"
+            android:text="@string/notifications"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -155,7 +154,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Extra"
+        android:text="@string/extra"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/notificationsButton" />
@@ -185,7 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="Help &amp; FAQ"
+            android:text="@string/help_amp_faq"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -220,7 +219,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="Logout"
+            android:text="@string/logout"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 

@@ -90,7 +90,14 @@
         android:id="@+id/programsArray"
         android:name="com.example.kursach_course.ProgramsArray"
         android:label="fragment_programs_array"
-        tools:layout="@layout/fragment_programs_array" />
+        tools:layout="@layout/fragment_programs_array" >
+        <action
+            android:id="@+id/action_programsArray_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
+        <action
+            android:id="@+id/action_programsArray_to_arrayExample"
+            app:destination="@id/arrayExample" />
+    </fragment>
     <fragment
         android:id="@+id/cheatsInstallingPython"
         android:name="com.example.kursach_course.CheatsInstallingPython"
@@ -116,5 +123,14 @@
         <action
             android:id="@+id/action_login_to_mainPrograms"
             app:destination="@id/mainPrograms" />
+    </fragment>
+    <fragment
+        android:id="@+id/arrayExample"
+        android:name="com.example.kursach_course.ArrayExample"
+        android:label="fragment_array_example"
+        tools:layout="@layout/fragment_array_example" >
+        <action
+            android:id="@+id/action_arrayExample_to_programsArray"
+            app:destination="@id/programsArray" />
     </fragment>
 </navigation>

@@ -6,26 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.kursach_course.databinding.FragmentProgramsArrayBinding
+import com.example.kursach_course.databinding.FragmentArrayExampleBinding
 
-class ProgramsArray : Fragment() {
-private lateinit var binding:FragmentProgramsArrayBinding
-
+class ArrayExample : Fragment() {
+private lateinit var binding:FragmentArrayExampleBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentProgramsArrayBinding.inflate(inflater)
+        binding = FragmentArrayExampleBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.backButton.setOnClickListener {
-            findNavController().navigate(R.id.action_programsArray_to_mainPrograms)
-        }
-        binding.ArrayExample.setOnClickListener {
-            findNavController().navigate(R.id.action_programsArray_to_arrayExample)
+            findNavController().navigate(R.id.action_arrayExample_to_programsArray)
         }
     }
 
