@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="small_text">16dp</dimen>
+    <dimen name="medium_text">18dp</dimen>
+    <dimen name="large_text">28dp</dimen>
+    <dimen name="auth_reg">32dp</dimen>
+</resources>

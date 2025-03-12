@@ -58,9 +58,6 @@
         <action
             android:id="@+id/action_mainCheats_to_profile"
             app:destination="@id/profile" />
-        <action
-            android:id="@+id/action_mainCheats_to_cheatsInstallingPython"
-            app:destination="@id/cheatsInstallingPython" />
     </fragment>
     <fragment
         android:id="@+id/mainDescription"
@@ -98,11 +95,6 @@
             android:id="@+id/action_programsArray_to_arrayExample"
             app:destination="@id/arrayExample" />
     </fragment>
-    <fragment
-        android:id="@+id/cheatsInstallingPython"
-        android:name="com.example.kursach_course.CheatsInstallingPython"
-        android:label="fragment_cheats_installing_python"
-        tools:layout="@layout/fragment_cheats_installing_python" />
     <fragment
         android:id="@+id/searchSystemFromPrograms"
         android:name="com.example.kursach_course.SearchSystemFromPrograms"
