@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_mainPrograms_to_searchSystemFromPrograms"
             app:destination="@id/searchSystemFromPrograms" />
+        <action
+            android:id="@+id/action_mainPrograms_to_writeCode"
+            app:destination="@id/writeCodeFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainCheats"
@@ -128,5 +131,10 @@
             android:id="@+id/action_arrayExample_to_programsArray"
             app:destination="@id/programsArray" />
     </fragment>
+    <fragment
+        android:id="@+id/writeCodeFragment"
+        android:name="com.example.kursach_course.fragments.WriteCode"
+        android:label="Write Code"
+        tools:layout="@layout/fragment_write_code" />
 
 </navigation>

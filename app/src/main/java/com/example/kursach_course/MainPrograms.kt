@@ -35,6 +35,9 @@ class MainPrograms : Fragment() {
         binding.ArrayBt.setOnClickListener {
             findNavController().navigate(R.id.action_mainPrograms_to_programsArray)
         }
+        binding.BasicBt.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPrograms_to_writeCode)
+        }
     }
 
 }

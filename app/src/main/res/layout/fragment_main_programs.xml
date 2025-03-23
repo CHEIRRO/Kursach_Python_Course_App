@@ -139,7 +139,7 @@
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/DictionaryBt"
+                android:id="@+id/dictionaryBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
@@ -183,7 +183,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/myButton8"
+                android:id="@+id/BasicBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"

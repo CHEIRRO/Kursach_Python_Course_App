@@ -17,7 +17,7 @@ import com.example.kursach_course.databinding.FragmentSearchSystemFromProgramsBi
 
 class SearchSystemFromPrograms : Fragment() {
 
-    private lateinit var binding: FragmentSearchSystemFromProgramsBinding
+    private lateinit var binding: FragmentSeachSystemFromProgramsBinding
     private var lastQuery: String? = null
 
     override fun onCreateView(
@@ -31,16 +31,19 @@ class SearchSystemFromPrograms : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Восстановление последнего запроса при изменении ориентации
         savedInstanceState?.let {
             lastQuery = it.getString("SEARCH_QUERY", "")
             binding.searchInput.setText(lastQuery)
         }
 
+        // Обработка нажатия на кнопку "Очистить"
         binding.clearButton.setOnClickListener {
             binding.searchInput.text.clear()
             hideKeyboard()
         }
 
+        // Отслеживание изменений текста в поле ввода
         binding.searchInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty()) {
@@ -64,13 +67,15 @@ class SearchSystemFromPrograms : Fragment() {
             }
         })
 
+        // Обработка нажатия на кнопку "Обновить"
         binding.retryButton.setOnClickListener {
             retryLastRequest()
         }
 
+        // Обработка нажатия на кнопку "Поиск" на клавиатуре
         binding.searchInput.setOnEditorActionListener { _, _, _ ->
             performSearch(binding.searchInput.text.toString())
-            true
+            true // Возвращаем true, чтобы обработать событие
         }
     }
 
@@ -85,6 +90,7 @@ class SearchSystemFromPrograms : Fragment() {
     }
 
     private fun showNoResultsPlaceholder() {
+        binding.noResultsPlaceholder.text = "Результатов не найдено"
         binding.noResultsPlaceholder.visibility = View.VISIBLE
         binding.retryButton.visibility = View.GONE
     }
@@ -92,13 +98,13 @@ class SearchSystemFromPrograms : Fragment() {
     private fun showErrorPlaceholder() {
         binding.noResultsPlaceholder.text = "Ничего не найдено. Попробуйте ещё раз."
         binding.noResultsPlaceholder.visibility = View.VISIBLE
-        binding.retryButton.visibility = View.VISIBLE
+        binding.retryButton.visibility = View.VISIBLE // Показываем кнопку "Обновить"
     }
 
     private fun retryLastRequest() {
         lastQuery?.let { query ->
             if (query.isNotEmpty()) {
-                performSearch(query) // Выполняем поиск с последним запросом
+                performSearch(query) // Повторно выполняем поиск с последним запросом
             } else {
                 Toast.makeText(requireContext(), "Нет последнего запроса", Toast.LENGTH_SHORT).show()
             }
@@ -106,12 +112,14 @@ class SearchSystemFromPrograms : Fragment() {
     }
 
     private fun performSearch(query: String) {
+        println("Выполняется поиск: $query") // Логирование
         lastQuery = query.trim()
 
         if (query.isEmpty()) {
             showNoResultsPlaceholder()
         } else {
             val searchResults = getSearchResults(query)
+            println("Результаты поиска: $searchResults") // Логирование
 
             if (searchResults.isEmpty()) {
                 showErrorPlaceholder()
@@ -135,7 +143,7 @@ class SearchSystemFromPrograms : Fragment() {
             "lists" to FragmentType.Lists
         )
 
-        binding.dynamicButtonContainer.removeAllViews()
+        binding.dynamicButtonContainer.removeAllViews() // Очищаем контейнер
 
         for ((key, fragmentType) in buttonMap) {
             if (key.contains(query, ignoreCase = true)) {
@@ -152,6 +160,9 @@ class SearchSystemFromPrograms : Fragment() {
                 binding.dynamicButtonContainer.addView(button)
             }
         }
+
+        // Показываем контейнер с кнопками
+        binding.buttonsContainer.visibility = View.VISIBLE
     }
 
     private fun handleButtonClick(fragmentType: FragmentType) {
@@ -166,9 +177,6 @@ class SearchSystemFromPrograms : Fragment() {
             FragmentType.Lists -> Toast.makeText(requireContext(), "Lists not implemented", Toast.LENGTH_SHORT).show()
         }
     }
-
-
-
 
     private fun getSearchResults(query: String): List<String> {
         val availableButtons = listOf(
