@@ -1,199 +1,246 @@
 package com.example.kursach_course
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kursach_course.databinding.FragmentSearchSystemFromProgramsBinding
 
 class SearchSystemFromPrograms : Fragment() {
 
-    private lateinit var binding: FragmentSeachSystemFromProgramsBinding
+    private lateinit var binding: FragmentSearchSystemFromProgramsBinding
     private var lastQuery: String? = null
+    private val handler = Handler(Looper.getMainLooper())
+    private val searchHistoryKey = "search_history"
+    private val maxHistorySize = 10
+    private lateinit var sharedPreferences: SharedPreferences
+
+    private val searchRunnable = Runnable {
+        performSearch(binding.searchEditText.text.toString())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchSystemFromProgramsBinding.inflate(inflater)
+        sharedPreferences = requireContext().getSharedPreferences("SearchPrefs", Context.MODE_PRIVATE)
+
+        setupSearchBar()
+
         return binding.root
     }
+    private val buttonList = listOf(
+        ButtonInfo("Array", R.id.action_searchSystemFromPrograms_to_programsArray),
+        ButtonInfo("Dictionary", R.id.action_searchSystemFromPrograms_to_programsArray),
+        ButtonInfo("File Handling", R.id.action_searchSystemFromPrograms_to_programsArray),
+        ButtonInfo("Function", R.id.action_searchSystemFromPrograms_to_programsArray),
+        ButtonInfo("Basic", R.id.action_searchSystemFromPrograms_to_programsArray),
+        ButtonInfo("Exception Handling", R.id.action_searchSystemFromPrograms_to_programsArray),
+        ButtonInfo("Formula", R.id.action_searchSystemFromPrograms_to_programsArray),
+        ButtonInfo("Lists", R.id.action_searchSystemFromPrograms_to_programsArray)
+    )
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // Восстановление последнего запроса при изменении ориентации
-        savedInstanceState?.let {
-            lastQuery = it.getString("SEARCH_QUERY", "")
-            binding.searchInput.setText(lastQuery)
-        }
-
-        // Обработка нажатия на кнопку "Очистить"
-        binding.clearButton.setOnClickListener {
-            binding.searchInput.text.clear()
-            hideKeyboard()
-        }
-
-        // Отслеживание изменений текста в поле ввода
-        binding.searchInput.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (s.isNullOrEmpty()) {
-                    binding.clearButton.visibility = View.GONE
-                    binding.buttonsContainer.visibility = View.GONE
-                } else {
-                    binding.clearButton.visibility = View.VISIBLE
+    private fun setupSearchBar() {
+        binding.apply {
+            searchEditText.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    showSearchHistory()
                 }
             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                s?.let {
-                    if (it.isEmpty()) {
-                        binding.buttonsContainer.visibility = View.GONE
+            searchEditText.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    val query = s.toString()
+                    if (query.isNotEmpty()) {
+                        searchEditText.visibility = View.VISIBLE
+                        clearButton.visibility = View.VISIBLE // Показываем кнопку "Очистить"
+                        handler.removeCallbacks(searchRunnable) // Удаляем предыдущий отложенный поиск
+                        handler.postDelayed(searchRunnable, 2000) // Запускаем поиск через 2 секунды
                     } else {
-                        showButtons(it.toString())
+                        clearButton.visibility = View.GONE // Скрываем кнопку "Очистить"
                     }
                 }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
+
+            // Обработка нажатия на Enter
+            searchEditText.setOnKeyListener { _, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    handler.removeCallbacks(searchRunnable) // Отменяем отложенный поиск
+                    performSearch(searchEditText.text.toString()) // Выполняем поиск сразу
+                    true // Событие обработано
+                } else {
+                    false
+                }
             }
-        })
 
-        // Обработка нажатия на кнопку "Обновить"
-        binding.retryButton.setOnClickListener {
-            retryLastRequest()
-        }
+            searchEditText.setOnClickListener {
+                showSearchHistory()
+            }
 
-        // Обработка нажатия на кнопку "Поиск" на клавиатуре
-        binding.searchInput.setOnEditorActionListener { _, _, _ ->
-            performSearch(binding.searchInput.text.toString())
-            true // Возвращаем true, чтобы обработать событие
-        }
-    }
+            clearButton.setOnClickListener {
+                searchEditText.text.clear() // Очищаем поле ввода
+                clearButton.visibility = View.GONE // Скрываем кнопку "Очистить"
+                hideKeyboard()
+            }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("SEARCH_QUERY", binding.searchInput.text.toString())
-    }
+            retryButton.setOnClickListener {
+                performSearch(lastQuery ?: "")
+            }
 
-    private fun hideKeyboard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.searchInput.windowToken, 0)
-    }
-
-    private fun showNoResultsPlaceholder() {
-        binding.noResultsPlaceholder.text = "Результатов не найдено"
-        binding.noResultsPlaceholder.visibility = View.VISIBLE
-        binding.retryButton.visibility = View.GONE
-    }
-
-    private fun showErrorPlaceholder() {
-        binding.noResultsPlaceholder.text = "Ничего не найдено. Попробуйте ещё раз."
-        binding.noResultsPlaceholder.visibility = View.VISIBLE
-        binding.retryButton.visibility = View.VISIBLE // Показываем кнопку "Обновить"
-    }
-
-    private fun retryLastRequest() {
-        lastQuery?.let { query ->
-            if (query.isNotEmpty()) {
-                performSearch(query) // Повторно выполняем поиск с последним запросом
-            } else {
-                Toast.makeText(requireContext(), "Нет последнего запроса", Toast.LENGTH_SHORT).show()
+            clearHistoryButton.setOnClickListener {
+                clearSearchHistory()
             }
         }
     }
 
     private fun performSearch(query: String) {
-        println("Выполняется поиск: $query") // Логирование
-        lastQuery = query.trim()
-
         if (query.isEmpty()) {
-            showNoResultsPlaceholder()
-        } else {
-            val searchResults = getSearchResults(query)
-            println("Результаты поиска: $searchResults") // Логирование
-
-            if (searchResults.isEmpty()) {
-                showErrorPlaceholder()
-            } else {
-                binding.noResultsPlaceholder.visibility = View.GONE
-                binding.retryButton.visibility = View.GONE
-                showButtons(query)
-            }
+            showPlaceholderNoResults()
+            return
         }
+
+        // Показываем ProgressBar и скрываем другие элементы
+        binding.progressBar.visibility = View.VISIBLE
+        binding.resultContainer.visibility = View.GONE
+        binding.placeholderLayout.visibility = View.GONE
+
+        // Имитация задержки запроса (можно убрать, если задержка не нужна)
+        handler.postDelayed({
+            val matchedButtons = buttonList.filter { it.name.contains(query, ignoreCase = true) }
+            binding.progressBar.visibility = View.GONE // Скрываем ProgressBar
+
+            if (matchedButtons.isNotEmpty()) {
+                showSearchResults(matchedButtons)
+                saveToSearchHistory(query) // Сохраняем запрос в историю
+            } else {
+                showPlaceholderError()
+            }
+        }, 1500) // Задержка для имитации запроса (можно убрать)
     }
 
-    private fun showButtons(query: String) {
-        val buttonMap = mapOf(
-            "array" to FragmentType.Array,
-            "dictionary" to FragmentType.Dictionary,
-            "file" to FragmentType.File,
-            "function" to FragmentType.Function,
-            "basic" to FragmentType.Basic,
-            "exception" to FragmentType.Exception,
-            "formula" to FragmentType.Formula,
-            "lists" to FragmentType.Lists
-        )
+    private fun showSearchResults(buttons: List<ButtonInfo>) {
+        binding.resultContainer.removeAllViews()
 
-        binding.dynamicButtonContainer.removeAllViews() // Очищаем контейнер
+        for (buttonInfo in buttons) {
+            val newButton = AppCompatButton(requireContext()).apply {
+                text = buttonInfo.name
+                setOnClickListener {
+                    findNavController().navigate(buttonInfo.actionId)
+                }
+                layoutParams = LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    setMargins(16, 8, 16, 8)
+                }
+            }
+            binding.resultContainer.addView(newButton)
+        }
 
-        for ((key, fragmentType) in buttonMap) {
-            if (key.contains(query, ignoreCase = true)) {
-                val button = Button(requireContext()).apply {
-                    text = key.capitalize()
-                    layoutParams = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
+        // Показываем результаты и скрываем ProgressBar
+        binding.resultContainer.visibility = View.VISIBLE
+        binding.placeholderLayout.visibility = View.GONE
+    }
+
+
+    private fun showPlaceholderNoResults() {
+        binding.placeholderLayout.visibility = View.VISIBLE
+        binding.placeholderText.text = getString(R.string.no_results_found)
+        binding.retryButton.visibility = View.GONE
+        binding.resultContainer.visibility = View.GONE
+        binding.progressBar.visibility = View.GONE
+    }
+
+    private fun showPlaceholderError() {
+        binding.placeholderLayout.visibility = View.VISIBLE
+        binding.placeholderText.text = getString(R.string.error_occurred)
+        binding.retryButton.visibility = View.VISIBLE
+        binding.resultContainer.visibility = View.GONE
+        binding.progressBar.visibility = View.GONE
+    }
+    private fun hideSearchResults() {
+        binding.resultContainer.removeAllViews()
+        binding.placeholderLayout.visibility = View.GONE
+    }
+
+
+    private fun showSearchHistory() {
+        val history = getSearchHistory()
+        if (history.isNotEmpty()) {
+            binding.historyContainer.removeAllViews()
+            history.forEach { query ->
+                val historyButton = Button(requireContext()).apply {
+                    text = query
                     setOnClickListener {
-                        handleButtonClick(fragmentType)
+                        binding.searchEditText.setText(query)
+                        binding.searchEditText.setSelection(query.length)
+                        performSearch(query)
                     }
                 }
-                binding.dynamicButtonContainer.addView(button)
+                binding.historyContainer.addView(historyButton)
             }
         }
-
-        // Показываем контейнер с кнопками
-        binding.buttonsContainer.visibility = View.VISIBLE
     }
 
-    private fun handleButtonClick(fragmentType: FragmentType) {
-        when (fragmentType) {
-            FragmentType.Array -> findNavController().navigate(R.id.action_searchSystemFromPrograms_to_programsArray)
-            FragmentType.Basic -> Toast.makeText(requireContext(), "Exception not implemented", Toast.LENGTH_SHORT).show()
-            FragmentType.Dictionary -> Toast.makeText(requireContext(), "Exception not implemented", Toast.LENGTH_SHORT).show()
-            FragmentType.Exception -> Toast.makeText(requireContext(), "Exception not implemented", Toast.LENGTH_SHORT).show()
-            FragmentType.File -> Toast.makeText(requireContext(), "File not implemented", Toast.LENGTH_SHORT).show()
-            FragmentType.Formula -> Toast.makeText(requireContext(), "Formula not implemented", Toast.LENGTH_SHORT).show()
-            FragmentType.Function -> Toast.makeText(requireContext(), "Function not implemented", Toast.LENGTH_SHORT).show()
-            FragmentType.Lists -> Toast.makeText(requireContext(), "Lists not implemented", Toast.LENGTH_SHORT).show()
+    private fun saveToSearchHistory(query: String) {
+        val history = getSearchHistory().toMutableList()
+        history.remove(query) // Удалить дубликаты
+        history.add(0, query) // Добавить в начало списка
+        if (history.size > maxHistorySize) {
+            history.removeAt(history.size - 1)
+        }
+        sharedPreferences.edit().putStringSet(searchHistoryKey, history.toSet()).apply()
+    }
+
+    private fun getSearchHistory(): List<String> {
+        return sharedPreferences.getStringSet(searchHistoryKey, emptySet())?.toList() ?: emptyList()
+    }
+
+    private fun clearSearchHistory() {
+        sharedPreferences.edit().remove(searchHistoryKey).apply()
+        binding.historyContainer.removeAllViews()
+    }
+
+    private fun hideKeyboard() {
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("lastQuery", binding.searchEditText.text.toString())
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        savedInstanceState?.getString("lastQuery")?.let {
+            binding.searchEditText.setText(it)
+            binding.searchEditText.setSelection(it.length)
+            performSearch(it)
         }
     }
+    data class ButtonInfo(
+        val name: String,
+        val actionId: Int
+    )
 
-    private fun getSearchResults(query: String): List<String> {
-        val availableButtons = listOf(
-            "array", "dictionary", "file", "function",
-            "basic", "exception", "formula", "lists"
-        )
-        return availableButtons.filter { it.contains(query, ignoreCase = true) }
-    }
-
-    sealed class FragmentType {
-        object Array : FragmentType()
-        object Dictionary : FragmentType()
-        object File : FragmentType()
-        object Function : FragmentType()
-        object Basic : FragmentType()
-        object Exception : FragmentType()
-        object Formula : FragmentType()
-        object Lists : FragmentType()
-    }
 }

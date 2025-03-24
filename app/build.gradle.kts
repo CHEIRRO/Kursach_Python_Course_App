@@ -40,6 +40,7 @@ android {
         viewBinding = true
     }
 
+
 }
 
 dependencies {

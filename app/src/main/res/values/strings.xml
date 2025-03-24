@@ -68,5 +68,7 @@
     <string name="data_structure">Data Structure</string>
     <string name="object_oriented_programming">Object Oriented Programming</string>
     <string name="input_output">Input Output</string>
-
+    <string name="no_results_found">Результатов не найдено</string>
+    <string name="error_occurred">Произошла ошибка. Попробуйте снова.</string>
+    <string name="dark_theme">Темная тема</string>
 </resources>
