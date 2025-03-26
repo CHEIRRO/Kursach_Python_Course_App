@@ -22,13 +22,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kursach_course.databinding.FragmentSearchSystemFromProgramsBinding
 
 class SearchSystemFromPrograms : Fragment() {
-
+    private var _binding: FragmentSearchSystemFromProgramsBinding? = null
     private lateinit var binding: FragmentSearchSystemFromProgramsBinding
     private var lastQuery: String? = null
     private val handler = Handler(Looper.getMainLooper())
     private val searchHistoryKey = "search_history"
     private val maxHistorySize = 10
     private lateinit var sharedPreferences: SharedPreferences
+    private var isSearchRunning = false
 
     private val searchRunnable = Runnable {
         performSearch(binding.searchEditText.text.toString())
@@ -38,6 +39,7 @@ class SearchSystemFromPrograms : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentSearchSystemFromProgramsBinding.inflate(inflater, container, false)
         binding = FragmentSearchSystemFromProgramsBinding.inflate(inflater)
         sharedPreferences = requireContext().getSharedPreferences("SearchPrefs", Context.MODE_PRIVATE)
 
@@ -55,7 +57,6 @@ class SearchSystemFromPrograms : Fragment() {
         ButtonInfo("Formula", R.id.action_searchSystemFromPrograms_to_programsArray),
         ButtonInfo("Lists", R.id.action_searchSystemFromPrograms_to_programsArray)
     )
-
     private fun setupSearchBar() {
         binding.apply {
             searchEditText.setOnFocusChangeListener { _, hasFocus ->
@@ -63,83 +64,70 @@ class SearchSystemFromPrograms : Fragment() {
                     showSearchHistory()
                 }
             }
-
             searchEditText.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                     val query = s.toString()
                     if (query.isNotEmpty()) {
                         searchEditText.visibility = View.VISIBLE
-                        clearButton.visibility = View.VISIBLE // Показываем кнопку "Очистить"
-                        handler.removeCallbacks(searchRunnable) // Удаляем предыдущий отложенный поиск
-                        handler.postDelayed(searchRunnable, 2000) // Запускаем поиск через 2 секунды
+                        clearButton.visibility = View.VISIBLE
+                        handler.removeCallbacks(searchRunnable)
+                        handler.postDelayed(searchRunnable, 2000)
                     } else {
-                        clearButton.visibility = View.GONE // Скрываем кнопку "Очистить"
+                        clearButton.visibility = View.GONE
                     }
                 }
-
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             })
-
-            // Обработка нажатия на Enter
             searchEditText.setOnKeyListener { _, keyCode, event ->
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                    handler.removeCallbacks(searchRunnable) // Отменяем отложенный поиск
-                    performSearch(searchEditText.text.toString()) // Выполняем поиск сразу
-                    true // Событие обработано
+                    handler.removeCallbacks(searchRunnable)
+                    performSearch(searchEditText.text.toString())
+                    true
                 } else {
                     false
                 }
             }
-
             searchEditText.setOnClickListener {
                 showSearchHistory()
             }
-
             clearButton.setOnClickListener {
-                searchEditText.text.clear() // Очищаем поле ввода
-                clearButton.visibility = View.GONE // Скрываем кнопку "Очистить"
+                searchEditText.text.clear()
+                clearButton.visibility = View.GONE
                 hideKeyboard()
             }
-
             retryButton.setOnClickListener {
                 performSearch(lastQuery ?: "")
             }
-
             clearHistoryButton.setOnClickListener {
                 clearSearchHistory()
             }
         }
     }
-
     private fun performSearch(query: String) {
         if (query.isEmpty()) {
             showPlaceholderNoResults()
             return
         }
 
-        // Показываем ProgressBar и скрываем другие элементы
         binding.progressBar.visibility = View.VISIBLE
         binding.resultContainer.visibility = View.GONE
         binding.placeholderLayout.visibility = View.GONE
 
-        // Имитация задержки запроса (можно убрать, если задержка не нужна)
         handler.postDelayed({
             val matchedButtons = buttonList.filter { it.name.contains(query, ignoreCase = true) }
-            binding.progressBar.visibility = View.GONE // Скрываем ProgressBar
+            binding.progressBar.visibility = View.GONE
 
             if (matchedButtons.isNotEmpty()) {
                 showSearchResults(matchedButtons)
-                saveToSearchHistory(query) // Сохраняем запрос в историю
+                saveToSearchHistory(query)
             } else {
                 showPlaceholderError()
             }
-        }, 1500) // Задержка для имитации запроса (можно убрать)
+        }, 1500)
     }
-
     private fun showSearchResults(buttons: List<ButtonInfo>) {
         binding.resultContainer.removeAllViews()
-
         for (buttonInfo in buttons) {
             val newButton = AppCompatButton(requireContext()).apply {
                 text = buttonInfo.name
@@ -155,13 +143,9 @@ class SearchSystemFromPrograms : Fragment() {
             }
             binding.resultContainer.addView(newButton)
         }
-
-        // Показываем результаты и скрываем ProgressBar
         binding.resultContainer.visibility = View.VISIBLE
         binding.placeholderLayout.visibility = View.GONE
     }
-
-
     private fun showPlaceholderNoResults() {
         binding.placeholderLayout.visibility = View.VISIBLE
         binding.placeholderText.text = getString(R.string.no_results_found)
@@ -169,7 +153,6 @@ class SearchSystemFromPrograms : Fragment() {
         binding.resultContainer.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
     }
-
     private fun showPlaceholderError() {
         binding.placeholderLayout.visibility = View.VISIBLE
         binding.placeholderText.text = getString(R.string.error_occurred)
@@ -181,8 +164,6 @@ class SearchSystemFromPrograms : Fragment() {
         binding.resultContainer.removeAllViews()
         binding.placeholderLayout.visibility = View.GONE
     }
-
-
     private fun showSearchHistory() {
         val history = getSearchHistory()
         if (history.isNotEmpty()) {
@@ -200,36 +181,36 @@ class SearchSystemFromPrograms : Fragment() {
             }
         }
     }
-
     private fun saveToSearchHistory(query: String) {
         val history = getSearchHistory().toMutableList()
-        history.remove(query) // Удалить дубликаты
-        history.add(0, query) // Добавить в начало списка
+        history.remove(query)
+        history.add(0, query)
         if (history.size > maxHistorySize) {
             history.removeAt(history.size - 1)
         }
         sharedPreferences.edit().putStringSet(searchHistoryKey, history.toSet()).apply()
     }
-
     private fun getSearchHistory(): List<String> {
         return sharedPreferences.getStringSet(searchHistoryKey, emptySet())?.toList() ?: emptyList()
     }
-
     private fun clearSearchHistory() {
         sharedPreferences.edit().remove(searchHistoryKey).apply()
         binding.historyContainer.removeAllViews()
     }
-
     private fun hideKeyboard() {
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
     }
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("lastQuery", binding.searchEditText.text.toString())
+        outState.putBoolean("isSearchRunning", isSearchRunning)
     }
-
+    override fun onDestroyView() {
+        handler.removeCallbacksAndMessages(null)
+        _binding = null
+        super.onDestroyView()
+    }
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         savedInstanceState?.getString("lastQuery")?.let {
@@ -242,5 +223,4 @@ class SearchSystemFromPrograms : Fragment() {
         val name: String,
         val actionId: Int
     )
-
 }

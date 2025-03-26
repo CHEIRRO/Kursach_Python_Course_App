@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.material.v190)
     // Основные зависимости AndroidX
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

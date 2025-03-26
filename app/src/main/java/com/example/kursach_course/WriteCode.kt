@@ -19,7 +19,6 @@ class WriteCode : Fragment() {
 
     private lateinit var binding: FragmentWriteCodeBinding
 
-    // Замени на свой токен Glot.io API
     private val API_TOKEN = "218d751e-c337-40fa-892f-05b23ab55082"
 
     override fun onCreateView(

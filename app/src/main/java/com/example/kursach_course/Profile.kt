@@ -7,17 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.kursach_course.databinding.FragmentProfileBinding
 
 class Profile : Fragment() {
-private lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentProfileBinding.inflate(inflater)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -25,32 +26,24 @@ private lateinit var binding: FragmentProfileBinding
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_mainPrograms)
         }
-
-        // Инициализация SharedPreferences
         val sharedPreferences = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
-
-        // Инициализация переключателя
-        val themeSwitch = binding.themeSwitch
-        val isDarkTheme = sharedPreferences.getBoolean("isDarkTheme", false)
-        themeSwitch.isChecked = isDarkTheme
-
-        // Установка начальной темы
-        if (isDarkTheme) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-
-        // Обработка переключения темы
-        themeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
+        val isDarkTheme = sharedPreferences.getBoolean("isDarkTheme", true)
+        binding.themeSwitch.isChecked = isDarkTheme
+        binding.profileCard.setCardBackgroundColor(
+            ContextCompat.getColorStateList(
+                requireContext(),
+                if (isDarkTheme) R.color.gray else R.color.white
+            )
+        )
+        binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
             sharedPreferences.edit().putBoolean("isDarkTheme", isChecked).apply()
-            requireActivity().recreate() // Перезапуск активности для применения темы
+
+            if (isChecked) {
+                requireActivity().setTheme(R.style.Theme_AppDark)
+            } else {
+                requireActivity().setTheme(R.style.Theme_Kursach_course)
+            }
+            requireActivity().recreate()
         }
     }
-
 }
