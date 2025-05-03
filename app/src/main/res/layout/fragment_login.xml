@@ -28,6 +28,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <!-- Текст "PASSWORD" -->
+
         <View
             android:id="@+id/wave3"
             android:layout_width="match_parent"
@@ -37,8 +39,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <!-- Текст "PASSWORD" -->
 
         <Button
             android:id="@+id/bt_next"
@@ -54,23 +54,40 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordField"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.818" />
 
         <Button
-            android:id="@+id/myButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/createAccountbt"
+            android:layout_width="127dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="3dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true"
             android:padding="10dp"
-            android:textSize="15sp"
             android:text="@string/create_account"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/wave1"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/cangeEmailbt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bt_next" />
+
+        <Button
+            android:id="@+id/cangeEmailbt"
+            android:layout_width="155dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:text="Forgot password?"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/wave1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/emailLabel"

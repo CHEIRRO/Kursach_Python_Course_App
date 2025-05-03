@@ -136,5 +136,10 @@
         android:name="com.example.kursach_course.fragments.WriteCode"
         android:label="Write Code"
         tools:layout="@layout/fragment_write_code" />
+    <fragment
+        android:id="@+id/changeEmail"
+        android:name="com.example.kursach_course.ChangeEmail"
+        android:label="fragment_change_email"
+        tools:layout="@layout/fragment_change_email" />
 
 </navigation>
