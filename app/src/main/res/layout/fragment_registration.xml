@@ -27,8 +27,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Текст "PASSWORD" -->
-
         <View
             android:id="@+id/wave3"
             android:layout_width="411dp"
@@ -105,8 +103,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
-
-        <!-- Новые поля для ввода кода -->
 
         <TextView
             android:id="@+id/codeLabel1"

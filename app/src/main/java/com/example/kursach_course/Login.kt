@@ -24,8 +24,11 @@ private lateinit var binding:FragmentLoginBinding
         binding.btNext.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_mainPrograms)
         }
-        binding.myButton.setOnClickListener {
+        binding.createAccountbt.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_registrationFragment)
+        }
+        binding.changeEmailbt.setOnClickListener {
+            findNavController().navigate(R.id.action_login_to_changeEmail)
         }
     }
 

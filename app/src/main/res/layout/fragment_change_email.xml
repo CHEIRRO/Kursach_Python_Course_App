@@ -3,12 +3,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ChangeEmail">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <!-- Фоновые элементы -->
+        <View
+            android:id="@+id/wave1"
+            android:layout_width="412dp"
+            android:layout_height="735dp"
+            android:background="@drawable/wave_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/wave2"
+            android:layout_width="412dp"
+            android:layout_height="783dp"
+            android:background="@drawable/wave_background_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/wave3"
+            android:layout_width="411dp"
+            android:layout_height="842dp"
+            android:background="@drawable/wave_background_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Основные элементы формы -->
+
+        <!-- Центральная группа -->
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="64dp"
+            android:text="Смена пароля"
+            android:textAppearance="@style/some_id"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/wave3" />
+
+        <LinearLayout
+            android:layout_width="413dp"
+            android:layout_height="479dp"
+            android:orientation="vertical"
+            android:padding="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <TextView
+                android:id="@+id/emailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ПОЧТА"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/emailField"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/input_bg"
+                android:hint="Введите почту"
+                android:paddingHorizontal="16dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#E0E0E0" />
+
+            <!-- Группа для кода (изначально скрыта) -->
+            <Button
+                android:id="@+id/bt_send_email"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#300E74"
+                android:text="Отправить письмо"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/codeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ПОДТВЕРЖДЕНИЕ КОДА"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="24dp"
+                android:textSize="12sp"
+                android:visibility="gone"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/codeField"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/input_bg"
+                android:hint="Введите код"
+                android:paddingHorizontal="16dp"
+                android:textColor="#FFFFFF"
+                android:visibility="gone"
+                android:textColorHint="#E0E0E0" />
+
+            <!-- Группа для кода (изначально скрыта) -->
+            <Button
+                android:id="@+id/bt_code_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#300E74"
+                android:text="Подтвердите код"
+                android:textColor="#FFFFFF"
+                android:visibility="gone"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
