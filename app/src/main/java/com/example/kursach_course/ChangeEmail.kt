@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.kursach_course.databinding.FragmentChangeEmailBinding
 
 class ChangeEmail : Fragment() {
@@ -21,24 +22,22 @@ class ChangeEmail : Fragment() {
 
         binding.btSendEmail.setOnClickListener {
             if (!isCodeSent) {
-                // Первое нажатие - отправка кода
+
                 val email = binding.emailField.text.toString().trim()
 
                 if (email.isNotEmpty()) {
-                    // Показываем поля для ввода кода и кнопку подтверждения
-                    binding.codeLabel.visibility = View.VISIBLE  // Показываем текстовое поле для кода
-                    binding.codeField.visibility = View.VISIBLE  // Показываем поле для ввода кода
-                    binding.btCodeConfirm.visibility = View.VISIBLE  // Показываем кнопку подтверждения
+                    binding.codeLabel.visibility = View.VISIBLE
+                    binding.codeField.visibility = View.VISIBLE
+                    binding.btCodeConfirm.visibility = View.VISIBLE
 
                     binding.btSendEmail.text = "Отправить код повторно"
-                    isCodeSent = true  // Устанавливаем, что код был отправлен
+                    isCodeSent = true
 
                     Toast.makeText(requireContext(), "Код отправлен на $email", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(requireContext(), "Введите почту", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                // Повторная отправка кода
                 val email = binding.emailField.text.toString().trim()
                 if (email.isNotEmpty()) {
 
@@ -58,6 +57,9 @@ class ChangeEmail : Fragment() {
             }
         }
 
+        binding.btCodeConfirm.setOnClickListener {
+            findNavController().navigate(R.id.action_changeEmail_to_newPasswordCreate)
+        }
         return binding.root
     }
 }

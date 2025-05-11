@@ -147,6 +147,18 @@
         <action
             android:id="@+id/action_changeEmail_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_changeEmail_to_newPasswordCreate"
+            app:destination="@id/newPasswordCreate" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPasswordCreate"
+        android:name="com.example.kursach_course.NewPasswordCreate"
+        android:label="fragment_new_password_create"
+        tools:layout="@layout/fragment_new_password_create" >
+        <action
+            android:id="@+id/action_newPasswordCreate_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
     </fragment>
 
 </navigation>
