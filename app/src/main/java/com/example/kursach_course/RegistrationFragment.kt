@@ -1,96 +1,80 @@
 package com.example.kursach_course
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.kursach_course.api.KtorRetrofitClient
 import com.example.kursach_course.databinding.FragmentRegistrationBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.POST
-
-// Модель данных для отправки на сервер
-data class RegisterRequest(
-    val login: String,
-    val email: String,
-    val password: String
-)
-
-// Модель данных ответа от сервера
-data class RegisterResponse(
-    val token: String
-)
-
-// Интерфейс для API регистрации
-interface AuthApi {
-    @POST("/register")
-    suspend fun register(@Body request: RegisterRequest): RegisterResponse
-}
+import com.example.kursach_course.models.RegisterRequest
+import com.example.kursach_course.models.RegisterResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegistrationFragment : Fragment() {
-    private lateinit var binding: FragmentRegistrationBinding
-    private val api by lazy {
-        Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080") // Замените на адрес вашего Ktor сервера
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(AuthApi::class.java)
-    }
+    private var _binding: FragmentRegistrationBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: android.view.LayoutInflater,
+        container: android.view.ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentRegistrationBinding.inflate(inflater)
+    ): android.view.View {
+        _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.btNext.setOnClickListener {
-            val name = binding.emailField.text.toString()
-            val email = binding.passwordField.text.toString()
-            val password = binding.codeField1.text.toString()
-            val repeatPassword = binding.codeField2.text.toString()
+    override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
+        binding.createAcc.setOnClickListener {
+            val name = binding.nameField.text.toString().trim()
+            val email = binding.emailField.text.toString().trim()
+            val pass = binding.passwordField.text.toString()
+            val passRepeat = binding.repeatPasswordField.text.toString()
 
-            if (password != repeatPassword) {
-                Toast.makeText(context, "Пароли не совпадают", Toast.LENGTH_SHORT).show()
+            if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (pass != passRepeat) {
+                Toast.makeText(requireContext(), "Пароли не совпадают", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(context, "Заполните все поля", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            val request = RegisterRequest(name, email, pass)
 
-            registerUser(name, email, password)
+            KtorRetrofitClient.authService.register(request).enqueue(object : Callback<RegisterResponse> {
+                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                    if (response.isSuccessful) {
+                        val body = response.body()!!
+                        requireContext()
+                            .getSharedPreferences("auth", android.content.Context.MODE_PRIVATE)
+                            .edit()
+                            .putString("token", body.token)
+                            .apply()
+
+                        Toast.makeText(requireContext(), "Добро пожаловать, ${body.name}!", Toast.LENGTH_SHORT).show()
+
+                        findNavController().navigate(R.id.action_registrationFragment_to_mainPrograms)
+
+                    } else {
+                        Toast.makeText(requireContext(),"Ошибка регистрации: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    Toast.makeText(requireContext(),"Сбой сети: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
+            })
         }
 
-        binding.myButton.setOnClickListener {
+        binding.alreadyhaveAcc.setOnClickListener {
             findNavController().navigate(R.id.action_registrationFragment_to_login)
         }
     }
 
-    private fun registerUser(login: String, email: String, password: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response = api.register(RegisterRequest(login, email, password))
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Регистрация успешна! Токен: ${response.token}", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_registrationFragment_to_login)
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Ошибка регистрации: ${e.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

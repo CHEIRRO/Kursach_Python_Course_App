@@ -7,10 +7,11 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-interface ApiService {
+interface ApiServiceforWriteCode {
     @POST("run/python/latest")
     fun runPythonCode(
         @Header("Authorization") token: String,
         @Body request: GlotRequest
     ): Call<GlotResponse>
 }
+

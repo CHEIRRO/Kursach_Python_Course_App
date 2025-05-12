@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_registrationFragment_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_registrationFragment_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
     </fragment>
     <fragment
         android:id="@+id/mainPrograms"

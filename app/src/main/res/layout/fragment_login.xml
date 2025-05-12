@@ -41,48 +41,51 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/bt_next"
+            android:id="@+id/loginInAcc"
             android:layout_width="354dp"
             android:layout_height="65dp"
             android:layout_marginBottom="120dp"
             android:backgroundTint="#300E74"
-            android:text="@string/login"
+            android:text="АВТОРИЗИРОВАТЬСЯ"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordField"
+            app:layout_constraintTop_toBottomOf="@+id/emailField"
             app:layout_constraintVertical_bias="0.818" />
 
         <Button
             android:id="@+id/createAccountbt"
-            android:layout_width="127dp"
-            android:layout_height="46dp"
-            android:layout_marginBottom="3dp"
+            android:layout_width="164dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true"
             android:padding="10dp"
-            android:text="@string/create_account"
+            android:text="Создать аккаунт"
             android:textColor="@color/white"
+
             android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/cangeEmailbt"
+            app:layout_constraintBottom_toTopOf="@+id/changePassbt"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_next" />
+            app:layout_constraintTop_toBottomOf="@+id/loginInAcc" />
 
         <Button
-            android:id="@+id/changeEmailbt"
+            android:id="@+id/changePassbt"
             android:layout_width="155dp"
             android:layout_height="52dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="28dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true"
             android:padding="10dp"
-            android:text="Forgot password?"
+            android:text="Забыли пароль?"
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/wave1"
@@ -90,19 +93,19 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/emailLabel"
+            android:id="@+id/nameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/email"
+            android:text="ПОЧТА"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/emailField"
-            app:layout_constraintStart_toStartOf="@+id/emailField" />
+            app:layout_constraintBottom_toTopOf="@+id/nameField"
+            app:layout_constraintStart_toStartOf="@+id/nameField" />
 
         <EditText
-            android:id="@+id/emailField"
+            android:id="@+id/nameField"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -116,19 +119,19 @@
             app:layout_constraintTop_toTopOf="@+id/wave1" />
 
         <TextView
-            android:id="@+id/passwordLabel"
+            android:id="@+id/emailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/password"
+            android:text="ПАРОЛЬ"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/emailField"
-            app:layout_constraintTop_toBottomOf="@id/emailField" />
+            app:layout_constraintStart_toStartOf="@id/nameField"
+            app:layout_constraintTop_toBottomOf="@id/nameField" />
 
         <EditText
-            android:id="@+id/passwordField"
+            android:id="@+id/emailField"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -140,7 +143,7 @@
             android:textColorHint="#E0E0E0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
+            app:layout_constraintTop_toBottomOf="@id/emailLabel" />
 
 
         <TextView
@@ -149,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
-            android:text="@string/login"
+            android:text="Авторизация"
             android:textAppearance="@style/some_id"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

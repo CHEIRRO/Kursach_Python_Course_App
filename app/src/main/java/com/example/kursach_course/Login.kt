@@ -21,13 +21,13 @@ private lateinit var binding:FragmentLoginBinding
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.btNext.setOnClickListener {
+        binding.loginInAcc.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_mainPrograms)
         }
         binding.createAccountbt.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_registrationFragment)
         }
-        binding.changeEmailbt.setOnClickListener {
+        binding.changePassbt.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_changeEmail)
         }
     }

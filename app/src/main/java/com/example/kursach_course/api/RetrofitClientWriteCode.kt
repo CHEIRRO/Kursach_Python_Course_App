@@ -5,7 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitClient {
+object RetrofitClientWriteCode {
 
     private const val BASE_URL = "https://glot.io/api/"
 
@@ -17,14 +17,14 @@ object RetrofitClient {
         .addInterceptor(loggingInterceptor)
         .build()
 
-    val instance: ApiService by lazy {
+    val instance: ApiServiceforWriteCode by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        retrofit.create(ApiService::class.java)
+        retrofit.create(ApiServiceforWriteCode::class.java)
     }
 
 }

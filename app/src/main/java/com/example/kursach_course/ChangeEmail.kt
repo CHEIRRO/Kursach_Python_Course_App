@@ -23,7 +23,7 @@ class ChangeEmail : Fragment() {
         binding.btSendEmail.setOnClickListener {
             if (!isCodeSent) {
 
-                val email = binding.emailField.text.toString().trim()
+                val email = binding.btSendEmail.text.toString().trim()
 
                 if (email.isNotEmpty()) {
                     binding.codeLabel.visibility = View.VISIBLE
@@ -38,7 +38,7 @@ class ChangeEmail : Fragment() {
                     Toast.makeText(requireContext(), "Введите почту", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                val email = binding.emailField.text.toString().trim()
+                val email = binding.btSendEmail.text.toString().trim()
                 if (email.isNotEmpty()) {
 
                     Toast.makeText(requireContext(), "Код отправлен повторно", Toast.LENGTH_SHORT).show()

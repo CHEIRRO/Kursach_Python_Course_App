@@ -38,33 +38,32 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/bt_next"
+            android:id="@+id/createAcc"
             android:layout_width="354dp"
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="#300E74"
-            android:text="@string/sign_in_large"
-            android:textColor="#FFFFFF"
+            android:text="Зарегестрироваться"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/codeField2" />
+            app:layout_constraintTop_toBottomOf="@+id/repeatPasswordField" />
 
         <TextView
-            android:id="@+id/emailLabel"
+            android:id="@+id/nameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/name"
+            android:text="ИМЯ"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/emailField"
-            app:layout_constraintStart_toStartOf="@+id/emailField" />
+            app:layout_constraintBottom_toTopOf="@+id/nameField"
+            app:layout_constraintStart_toStartOf="@+id/nameField" />
 
         <EditText
-            android:id="@+id/emailField"
+            android:id="@+id/nameField"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -78,11 +77,38 @@
             app:layout_constraintTop_toTopOf="@+id/wave1" />
 
         <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="ПОЧТА"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/nameField"
+            app:layout_constraintTop_toBottomOf="@id/nameField" />
+
+        <EditText
+            android:id="@+id/emailField"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/input_bg"
+
+            android:paddingHorizontal="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#E0E0E0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailLabel" />
+
+        <TextView
             android:id="@+id/passwordLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/email"
+            android:text="ПАРОЛЬ"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -96,7 +122,7 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/input_bg"
-
+            android:inputType="textPassword"
             android:paddingHorizontal="16dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#E0E0E0"
@@ -105,11 +131,11 @@
             app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
 
         <TextView
-            android:id="@+id/codeLabel1"
+            android:id="@+id/repeatPassworLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/password"
+            android:text="ПОВТОРИТЕ ПАРОЛЬ"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -117,7 +143,7 @@
             app:layout_constraintTop_toBottomOf="@id/passwordField" />
 
         <EditText
-            android:id="@+id/codeField1"
+            android:id="@+id/repeatPasswordField"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginHorizontal="40dp"
@@ -129,42 +155,15 @@
             android:textColorHint="#E0E0E0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/codeLabel1" />
-
-        <TextView
-            android:id="@+id/codeLabel2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/repeat_password"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/codeField1"
-            app:layout_constraintTop_toBottomOf="@id/codeField1" />
-
-        <EditText
-            android:id="@+id/codeField2"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/input_bg"
-            android:inputType="textPassword"
-            android:paddingHorizontal="16dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#E0E0E0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/codeLabel2" />
+            app:layout_constraintTop_toBottomOf="@id/repeatPassworLabel" />
 
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/sign_in"
+            android:layout_marginTop="56dp"
+            android:text="Регистрация"
             android:textAppearance="@style/some_id"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -172,20 +171,21 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/myButton"
-            android:layout_width="149dp"
-            android:layout_height="66dp"
+            android:id="@+id/alreadyhaveAcc"
+            android:layout_width="171dp"
+            android:layout_height="52dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true"
             android:padding="10dp"
-            android:text="@string/have_an_account_enter"
+            android:text="Уже есть аккаунт?"
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/wave1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_next" />
+            app:layout_constraintTop_toBottomOf="@+id/createAcc"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

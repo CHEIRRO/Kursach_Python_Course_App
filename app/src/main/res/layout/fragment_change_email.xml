@@ -64,7 +64,7 @@
             app:layout_constraintVertical_bias="1.0">
 
             <TextView
-                android:id="@+id/emailLabel"
+                android:id="@+id/nameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ПОЧТА"
@@ -73,7 +73,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/emailField"
+                android:id="@+id/nameField"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="4dp"
@@ -84,6 +84,7 @@
                 android:textColorHint="#E0E0E0" />
 
             <!-- Группа для кода (изначально скрыта) -->
+
             <Button
                 android:id="@+id/bt_send_email"
                 android:layout_width="match_parent"

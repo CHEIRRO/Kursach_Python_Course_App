@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.kursach_course.api.RetrofitClient
+import com.example.kursach_course.api.RetrofitClientWriteCode
 import com.example.kursach_course.databinding.FragmentWriteCodeBinding
 import com.example.kursach_course.models.GlotFile
 import com.example.kursach_course.models.GlotRequest
@@ -52,7 +52,7 @@ class WriteCode : Fragment() {
             )
         )
 
-        RetrofitClient.instance.runPythonCode(API_TOKEN, request)
+        RetrofitClientWriteCode.instance.runPythonCode(API_TOKEN, request)
             .enqueue(object : Callback<GlotResponse> {
                 override fun onResponse(call: Call<GlotResponse>, response: Response<GlotResponse>) {
                     if (response.isSuccessful) {
