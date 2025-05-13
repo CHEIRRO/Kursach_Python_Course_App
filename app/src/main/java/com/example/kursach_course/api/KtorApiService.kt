@@ -2,6 +2,8 @@ package com.example.kursach_course.api
 
 import com.example.kursach_course.models.LoginRequest
 import com.example.kursach_course.models.LoginResponse
+import com.example.kursach_course.models.NewPasswordRequest
+import com.example.kursach_course.models.NewPasswordResponse
 import com.example.kursach_course.models.RegisterRequest
 import com.example.kursach_course.models.RegisterResponse
 import com.example.kursach_course.models.ResetCodeRequest
@@ -31,4 +33,9 @@ interface KtorApiService {
     fun verifyResetCode(
         @Body request: VerifyCodeRequest
     ): Call<Void>
+
+    @POST("restore/reset")
+    fun confirmPasswordReset(
+        @Body request: NewPasswordRequest
+    ): Call<NewPasswordResponse>
 }
