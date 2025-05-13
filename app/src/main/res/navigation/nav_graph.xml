@@ -148,9 +148,6 @@
         android:label="fragment_change_email"
         tools:layout="@layout/fragment_change_email" >
         <action
-            android:id="@+id/action_changeEmail_to_login"
-            app:destination="@id/login" />
-        <action
             android:id="@+id/action_changeEmail_to_newPasswordCreate"
             app:destination="@id/newPasswordCreate" />
     </fragment>
