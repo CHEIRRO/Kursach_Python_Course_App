@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kursach_course">
 
-        <receiver android:name=".AlarmReceiver"
+        <receiver android:name=".applications.notifications.AlarmReceiver"
             android:exported="false"/>
 
 

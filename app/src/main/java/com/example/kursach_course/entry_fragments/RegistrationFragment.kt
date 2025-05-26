@@ -1,9 +1,10 @@
-package com.example.kursach_course
+package com.example.kursach_course.entry_fragments
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.kursach_course.R
 import com.example.kursach_course.api.KtorRetrofitClient
 import com.example.kursach_course.databinding.FragmentRegistrationBinding
 import com.example.kursach_course.models.RegisterRequest

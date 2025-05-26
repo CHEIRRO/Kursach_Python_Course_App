@@ -1,4 +1,4 @@
-package com.example.kursach_course
+package com.example.kursach_course.applications
 
 import android.content.Context
 import android.os.Bundle
@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.work.WorkManager
+import com.example.kursach_course.R
 import com.example.kursach_course.databinding.FragmentProfileBinding
 
 class Profile : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.kursach_course
+package com.example.kursach_course.applications
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -17,6 +17,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.kursach_course.R
 import com.example.kursach_course.databinding.FragmentSearchSystemFromProgramsBinding
 
 class SearchSystemFromPrograms : Fragment() {

@@ -1,4 +1,4 @@
-package com.example.kursach_course
+package com.example.kursach_course.main_chapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.kursach_course.databinding.FragmentMainCheatsBinding
+import com.example.kursach_course.R
+import com.example.kursach_course.databinding.FragmentMainPracticeBinding
 
-class MainCheats : Fragment() {
-    private lateinit var binding: FragmentMainCheatsBinding
+class MainPractice : Fragment() {
+    private lateinit var binding: FragmentMainPracticeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainCheatsBinding.inflate(inflater)
+        binding = FragmentMainPracticeBinding.inflate(inflater)
         return binding.root
     }
 

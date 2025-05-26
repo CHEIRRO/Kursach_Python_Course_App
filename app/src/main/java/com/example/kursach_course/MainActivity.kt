@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.example.kursach_course.api.NotificationHelper
+import com.example.kursach_course.applications.notifications.NotificationHelper
+import com.example.kursach_course.applications.notifications.ReminderWorker
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {

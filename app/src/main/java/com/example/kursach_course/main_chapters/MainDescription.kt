@@ -1,4 +1,4 @@
-package com.example.kursach_course
+package com.example.kursach_course.main_chapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.kursach_course.R
 import com.example.kursach_course.databinding.FragmentMainDescriptionBinding
 
 class MainDescription : Fragment() {

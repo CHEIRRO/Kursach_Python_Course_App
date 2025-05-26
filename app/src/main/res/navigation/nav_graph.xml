@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomFragment"
-        android:name="com.example.kursach_course.WelcomFragment"
+        android:name="com.example.kursach_course.entry_fragments.WelcomFragment"
         android:label="fragment_welcom"
         tools:layout="@layout/fragment_welcom" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.kursach_course.RegistrationFragment"
+        android:name="com.example.kursach_course.entry_fragments.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -28,9 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/mainPrograms"
-        android:name="com.example.kursach_course.MainPrograms"
+        android:name="com.example.kursach_course.main_chapters.MainTheory"
         android:label="fragment_main_course"
-        tools:layout="@layout/fragment_main_programs" >
+        tools:layout="@layout/fragment_main_theory" >
         <action
             android:id="@+id/action_mainPrograms_to_mainCheats"
             app:destination="@id/mainCheats" />
@@ -46,12 +46,15 @@
         <action
             android:id="@+id/action_mainPrograms_to_writeCode"
             app:destination="@id/writeCodeFragment" />
+        <action
+            android:id="@+id/action_mainPrograms_to_parWelcomePython"
+            app:destination="@id/parWelcomePython" />
     </fragment>
     <fragment
         android:id="@+id/mainCheats"
-        android:name="com.example.kursach_course.MainCheats"
+        android:name="com.example.kursach_course.main_chapters.MainPractice"
         android:label="fragment_main_cheats"
-        tools:layout="@layout/fragment_main_cheats" >
+        tools:layout="@layout/fragment_main_practice" >
         <action
             android:id="@+id/action_mainCheats_to_mainPrograms"
             app:destination="@id/mainPrograms" />
@@ -67,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainDescription"
-        android:name="com.example.kursach_course.MainDescription"
+        android:name="com.example.kursach_course.main_chapters.MainDescription"
         android:label="fragment_main_description"
         tools:layout="@layout/fragment_main_description" >
         <action
@@ -85,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.kursach_course.Profile"
+        android:name="com.example.kursach_course.applications.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -98,17 +101,20 @@
 
     <fragment
         android:id="@+id/searchSystemFromPrograms"
-        android:name="com.example.kursach_course.SearchSystemFromPrograms"
+        android:name="com.example.kursach_course.applications.SearchSystemFromPrograms"
         android:label="fragment_search_system_from_programs"
         tools:layout="@layout/fragment_search_system_from_programs" >
         <action
             android:id="@+id/action_searchSystemFromPrograms_to_mainPrograms"
             app:destination="@id/mainPrograms" />
+        <action
+            android:id="@+id/action_searchSystemFromPrograms_to_parWelcomePython"
+            app:destination="@id/parWelcomePython" />
 
     </fragment>
     <fragment
         android:id="@+id/login"
-        android:name="com.example.kursach_course.Login"
+        android:name="com.example.kursach_course.entry_fragments.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -123,12 +129,12 @@
     </fragment>
     <fragment
         android:id="@+id/writeCodeFragment"
-        android:name="com.example.kursach_course.fragments.WriteCode"
+        android:name="com.example.kursach_course.applications.WriteCode"
         android:label="Write Code"
         tools:layout="@layout/fragment_write_code" />
     <fragment
         android:id="@+id/changeEmail"
-        android:name="com.example.kursach_course.ChangeEmail"
+        android:name="com.example.kursach_course.entry_fragments.SendPasswordToEmail"
         android:label="fragment_change_email"
         tools:layout="@layout/fragment_change_email" >
         <action
@@ -137,12 +143,17 @@
     </fragment>
     <fragment
         android:id="@+id/newPasswordCreate"
-        android:name="com.example.kursach_course.NewPasswordCreate"
+        android:name="com.example.kursach_course.entry_fragments.NewPasswordCreate"
         android:label="fragment_new_password_create"
         tools:layout="@layout/fragment_new_password_create" >
         <action
             android:id="@+id/action_newPasswordCreate_to_mainPrograms"
             app:destination="@id/mainPrograms" />
     </fragment>
+    <fragment
+        android:id="@+id/parWelcomePython"
+        android:name="com.example.kursach_course.main_chapters.chapters_main_theory.ChapWelcomePython"
+        android:label="fragment_par_welcome_python"
+        tools:layout="@layout/fragment_chap_welcome_python" />
 
 </navigation>

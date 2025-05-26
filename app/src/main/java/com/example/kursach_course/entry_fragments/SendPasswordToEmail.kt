@@ -1,4 +1,4 @@
-package com.example.kursach_course
+package com.example.kursach_course.entry_fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.kursach_course.R
 import com.example.kursach_course.api.KtorRetrofitClient
 import com.example.kursach_course.databinding.FragmentChangeEmailBinding
 import com.example.kursach_course.models.ResetCodeRequest
@@ -15,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ChangeEmail : Fragment() {
+class SendPasswordToEmail : Fragment() {
     private lateinit var binding: FragmentChangeEmailBinding
     private val api = KtorRetrofitClient.authService
 

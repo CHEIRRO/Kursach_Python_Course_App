@@ -1,4 +1,4 @@
-package com.example.kursach_course.fragments
+package com.example.kursach_course.applications
 
 import android.os.Bundle
 import android.view.LayoutInflater
