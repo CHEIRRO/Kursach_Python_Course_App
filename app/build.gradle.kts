@@ -67,4 +67,6 @@ dependencies {
     implementation(libs.converter.kotlinx.serialization)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.0")
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+    implementation ("androidx.work:work-runtime-ktx:2.8.1")
+
 }

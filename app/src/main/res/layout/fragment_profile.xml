@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="@string/my_profile"
+        android:text="Профиль"
         android:textAppearance="@style/some_id"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -83,7 +83,7 @@
                     android:id="@+id/profileName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cheirro"
+
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -91,7 +91,7 @@
                     android:id="@+id/profileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="code.hunny40@gmail.com"
+
                     android:textColor="@android:color/darker_gray"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="@string/settings"
+        android:text="Настройки"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,14 +136,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="@string/notifications"
+            android:text="Уведомления"
             android:textSize="14sp" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_right" />
-
+        <Switch
+            android:id="@+id/notifSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
 
     <TextView
@@ -152,13 +152,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/extra"
+        android:text="Дополнительно"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/notificationsButton" />
 
+
+
     <LinearLayout
-        android:id="@+id/helpButton"
+        android:id="@+id/logoutButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
@@ -174,39 +176,6 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@mipmap/ic_help" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:text="@string/help_amp_faq"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_right" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/logoutButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/helpButton">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
             android:src="@mipmap/ic_logout" />
 
         <TextView
@@ -214,7 +183,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="@string/logout"
+            android:text="Выход"
             android:textSize="14sp" />
 
         <ImageView

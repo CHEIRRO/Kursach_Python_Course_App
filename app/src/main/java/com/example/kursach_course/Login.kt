@@ -1,5 +1,6 @@
 package com.example.kursach_course
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +20,11 @@ class Login : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentLoginBinding.inflate(inflater)
+    ): View? {
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,39 +32,49 @@ class Login : Fragment() {
         binding.loginInAcc.setOnClickListener {
             val email = binding.emailField.text.toString().trim()
             val password = binding.passwordField.text.toString().trim()
-
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             val request = LoginRequest(email, password)
-
-            KtorRetrofitClient.authService.login(request).enqueue(object : Callback<LoginResponse> {
-
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    if (response.isSuccessful) {
-                        val loginResponse = response.body()
-
-                        Toast.makeText(requireContext(),"Добро пожаловать, ${loginResponse?.name}", Toast.LENGTH_SHORT).show()
-
-                        findNavController().navigate(R.id.action_login_to_mainPrograms)
-
-                    } else { Toast.makeText(requireContext(),"Неверный email или пароль", Toast.LENGTH_SHORT).show() }
-                }
-
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Toast.makeText(requireContext(),"Ошибка подключения: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
-                }
-            })
+            KtorRetrofitClient.authService.login(request)
+                .enqueue(object : Callback<LoginResponse> {
+                    override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                        if (response.isSuccessful) {
+                            val body = response.body()!!
+                            // 1) сохраняем имя и почту
+                            val prefs = requireContext()
+                                .getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                            prefs.edit()
+                                .putString("USER_NAME", body.name)
+                                .putString("USER_EMAIL", body.email)
+                                .apply()
+                            // 2) опционально показываем тост
+                            Toast.makeText(requireContext(),
+                                "Добро пожаловать, ${body.name}",
+                                Toast.LENGTH_SHORT).show()
+                            // 3) переходим в главный фрагмент
+                            findNavController().navigate(R.id.action_login_to_mainPrograms)
+                        } else {
+                            Toast.makeText(requireContext(),
+                                "Неверный email или пароль",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        Toast.makeText(requireContext(),
+                            "Ошибка подключения: ${t.localizedMessage}",
+                            Toast.LENGTH_LONG).show()
+                    }
+                })
         }
 
         binding.createAccountbt.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_registrationFragment)
         }
-
         binding.changePassbt.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_changeEmail)
         }
     }
 }
+

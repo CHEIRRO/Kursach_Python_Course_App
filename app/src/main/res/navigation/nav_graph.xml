@@ -91,6 +91,9 @@
         <action
             android:id="@+id/action_profile_to_mainPrograms"
             app:destination="@id/mainPrograms" />
+        <action
+            android:id="@+id/action_profile_to_welcomFragment"
+            app:destination="@id/welcomFragment" />
     </fragment>
 
     <fragment
