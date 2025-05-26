@@ -141,7 +141,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/ArrayBt"
+                android:id="@+id/WelcomePBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
@@ -151,17 +151,17 @@
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/dictionaryBt"
+                android:id="@+id/SchoolMathBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_background"
-                android:text="Школьная матиматика на python"
+                android:text="Школьная математика на python"
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/myButton7"
+                android:id="@+id/StringBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
@@ -171,7 +171,7 @@
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/myButton12"
+                android:id="@+id/ListBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
@@ -195,7 +195,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/BasicBt"
+                android:id="@+id/DataBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
@@ -205,7 +205,7 @@
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/myButton9"
+                android:id="@+id/NumbersBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
@@ -215,7 +215,7 @@
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/myButton10"
+                android:id="@+id/LoopBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
@@ -225,7 +225,7 @@
                 android:textColor="@android:color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/myButton11"
+                android:id="@+id/FunctionsBt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"

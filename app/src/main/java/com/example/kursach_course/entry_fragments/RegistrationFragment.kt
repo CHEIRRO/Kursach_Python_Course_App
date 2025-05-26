@@ -1,5 +1,6 @@
 package com.example.kursach_course.entry_fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -48,17 +49,36 @@ class RegistrationFragment : Fragment() {
                 override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                     if (response.isSuccessful) {
                         val body = response.body()!!
+
+                        // 1) Сохраняем токен
                         requireContext()
-                            .getSharedPreferences("auth", android.content.Context.MODE_PRIVATE)
+                            .getSharedPreferences("auth", Context.MODE_PRIVATE)
                             .edit()
                             .putString("token", body.token)
                             .apply()
 
+                        // 2) Сохраняем профиль в UserPrefs
+                        requireContext()
+                            .getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                            .edit()
+                            .putString("USER_NAME", body.name)
+                            .putString("USER_EMAIL", body.email)
+                            .apply()
+
+                        // 3) Сохраняем текущий аккаунт в AppData
+                        requireContext()
+                            .getSharedPreferences("AppData", Context.MODE_PRIVATE)
+                            .edit()
+                            .putString("CURRENT_USER_EMAIL", body.email)
+                            .putString("USER_${body.email}_NAME", body.name)
+                            .putString("USER_${body.email}_EMAIL", body.email)
+                            .apply()
+
+                        // 4) Навигация
                         Toast.makeText(requireContext(), "Добро пожаловать, ${body.name}!", Toast.LENGTH_SHORT).show()
-
                         findNavController().navigate(R.id.action_registrationFragment_to_mainPrograms)
-
-                    } else {
+                    }
+ else {
                         Toast.makeText(requireContext(),"Ошибка регистрации: ${response.code()}", Toast.LENGTH_SHORT).show()
                     }
                 }

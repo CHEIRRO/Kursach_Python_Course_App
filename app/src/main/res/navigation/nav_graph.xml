@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainPrograms">
+    app:startDestination="@id/welcomFragment">
 
     <fragment
         android:id="@+id/welcomFragment"
@@ -47,8 +47,9 @@
             android:id="@+id/action_mainPrograms_to_writeCode"
             app:destination="@id/writeCodeFragment" />
         <action
-            android:id="@+id/action_mainPrograms_to_parWelcomePython"
-            app:destination="@id/parWelcomePython" />
+            android:id="@+id/action_mainPrograms_to_ChapWelcomePython"
+            app:destination="@id/ChapWelcomePython" />
+
     </fragment>
     <fragment
         android:id="@+id/mainCheats"
@@ -109,7 +110,7 @@
             app:destination="@id/mainPrograms" />
         <action
             android:id="@+id/action_searchSystemFromPrograms_to_parWelcomePython"
-            app:destination="@id/parWelcomePython" />
+            app:destination="@id/ChapWelcomePython" />
 
     </fragment>
     <fragment
@@ -151,9 +152,25 @@
             app:destination="@id/mainPrograms" />
     </fragment>
     <fragment
-        android:id="@+id/parWelcomePython"
+        android:id="@+id/ChapWelcomePython"
         android:name="com.example.kursach_course.main_chapters.chapters_main_theory.ChapWelcomePython"
         android:label="fragment_par_welcome_python"
-        tools:layout="@layout/fragment_chap_welcome_python" />
+        tools:layout="@layout/fragment_chap_welcome_python" >
+        <action
+            android:id="@+id/action_ChapWelcomePython_to_mainPrograms"
+            app:destination="@id/mainPrograms" />
+        <action
+            android:id="@+id/action_ChapWelcomePython_to_parIntroduction"
+            app:destination="@id/ParIntroduction" />
+    </fragment>
+    <fragment
+        android:id="@+id/ParIntroduction"
+        android:name="com.example.kursach_course.main_chapters.chapters_main_theory.partition_welcome_python.ParIntroduction"
+        android:label="fragment_par_introduction"
+        tools:layout="@layout/fragment_par_introduction" >
+        <action
+            android:id="@+id/action_parIntroduction_to_ChapWelcomePython"
+            app:destination="@id/ChapWelcomePython" />
+    </fragment>
 
 </navigation>

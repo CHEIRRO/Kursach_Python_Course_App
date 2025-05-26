@@ -43,18 +43,32 @@ class Login : Fragment() {
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                         if (response.isSuccessful) {
                             val body = response.body()!!
-                            // 1) сохраняем имя и почту
-                            val prefs = requireContext()
+
+                            // === 1. Сохраняем данные профиля в UserPrefs (как у вас было) ===
+                            val userPrefs = requireContext()
                                 .getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-                            prefs.edit()
+                                .edit()
+                            userPrefs
                                 .putString("USER_NAME", body.name)
                                 .putString("USER_EMAIL", body.email)
-                                .apply()
-                            // 2) опционально показываем тост
+                            userPrefs.apply()
+
+                            // === 2. Сохраняем текущий аккаунт в AppData ===
+                            //   этот email будет использоваться как префикс для флагов прохождения разделов
+                            val appData = requireContext()
+                                .getSharedPreferences("AppData", Context.MODE_PRIVATE)
+                                .edit()
+                            appData
+                                .putString("CURRENT_USER_EMAIL", body.email)
+                                // можно сразу скопировать туда же имя и почту под ключами с префиксом:
+                                .putString("USER_${body.email}_NAME", body.name)
+                                .putString("USER_${body.email}_EMAIL", body.email)
+                            appData.apply()
+
+                            // 3. Тост и навигация
                             Toast.makeText(requireContext(),
                                 "Добро пожаловать, ${body.name}",
                                 Toast.LENGTH_SHORT).show()
-                            // 3) переходим в главный фрагмент
                             findNavController().navigate(R.id.action_login_to_mainPrograms)
                         } else {
                             Toast.makeText(requireContext(),
@@ -62,6 +76,7 @@ class Login : Fragment() {
                                 Toast.LENGTH_SHORT).show()
                         }
                     }
+
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Toast.makeText(requireContext(),
                             "Ошибка подключения: ${t.localizedMessage}",

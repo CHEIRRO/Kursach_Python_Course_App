@@ -37,6 +37,9 @@ class MainTheory : Fragment() {
         binding.codeBt.setOnClickListener {
             findNavController().navigate(R.id.action_mainPrograms_to_writeCode)
         }
+        binding.WelcomePBt.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPrograms_to_ChapWelcomePython)
+        }
     }
 
 }

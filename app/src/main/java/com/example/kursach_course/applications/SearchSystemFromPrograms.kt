@@ -47,14 +47,14 @@ class SearchSystemFromPrograms : Fragment() {
         return binding.root
     }
     private val buttonList = listOf(
-        ButtonInfo("Array", false),
-        ButtonInfo("Dictionary", false),
-        ButtonInfo("File Handling", false),
-        ButtonInfo("Function", false),
-        ButtonInfo("Basic", false),
-        ButtonInfo("Exception Handling", false),
-        ButtonInfo("Formula",false),
-        ButtonInfo("Lists", false)
+        ButtonInfo("Знакомство с python", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Работа с данными", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Школьная математика на python", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Операции с числами", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Операции со строками", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Всё о циклах", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Списки",R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Функции", R.id.action_searchSystemFromPrograms_to_parWelcomePython)
     )
     private fun setupSearchBar() {
         binding.apply {
@@ -220,6 +220,6 @@ class SearchSystemFromPrograms : Fragment() {
     }
     data class ButtonInfo(
         val name: String,
-        val actionId: Boolean
+        val actionId: Int
     )
 }
