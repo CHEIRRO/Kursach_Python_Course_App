@@ -1,30 +1,73 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:name="com.example.kursach_course.WriteCode"
-    android:label="Write Code">
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/codeInput"
+    <!-- Контейнер для поля ввода с номерами строк -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введите код"
-        android:inputType="textMultiLine"
-        android:minLines="5" />
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
 
+        <!-- Поле с номерами строк внутри ScrollView -->
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:overScrollMode="always"
+            android:scrollbars="none">
+
+            <TextView
+                android:id="@+id/lineNumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top|end"
+                android:padding="8dp"
+                android:text="1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26"
+                android:textColor="#888888"
+                android:textSize="16sp" />
+        </ScrollView>
+
+        <!-- Редактируемое поле кода -->
+        <EditText
+            android:id="@+id/codeInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:drawable/edit_text"
+            android:gravity="start|top"
+            android:hint="Введите код здесь..."
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:overScrollMode="always"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Кнопка компиляции -->
+
+    <!-- Раздел вывода результатов -->
     <Button
         android:id="@+id/executeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Выполнить" />
+        android:layout_marginTop="12dp"
+        android:text="Скомпилировать" />
 
     <TextView
         android:id="@+id/resultText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Результат будет здесь" />
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="#EFEFEF"
+        android:overScrollMode="always"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:text="Вывод появится здесь..."
+        android:textColor="#000000"
+        android:textSize="14sp" />
 </LinearLayout>

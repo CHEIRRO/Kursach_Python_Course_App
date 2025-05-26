@@ -16,9 +16,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kursach_course.databinding.FragmentSearchSystemFromProgramsBinding
 
 class SearchSystemFromPrograms : Fragment() {
@@ -48,14 +46,14 @@ class SearchSystemFromPrograms : Fragment() {
         return binding.root
     }
     private val buttonList = listOf(
-        ButtonInfo("Array", R.id.action_searchSystemFromPrograms_to_programsArray),
-        ButtonInfo("Dictionary", R.id.action_searchSystemFromPrograms_to_programsArray),
-        ButtonInfo("File Handling", R.id.action_searchSystemFromPrograms_to_programsArray),
-        ButtonInfo("Function", R.id.action_searchSystemFromPrograms_to_programsArray),
-        ButtonInfo("Basic", R.id.action_searchSystemFromPrograms_to_programsArray),
-        ButtonInfo("Exception Handling", R.id.action_searchSystemFromPrograms_to_programsArray),
-        ButtonInfo("Formula", R.id.action_searchSystemFromPrograms_to_programsArray),
-        ButtonInfo("Lists", R.id.action_searchSystemFromPrograms_to_programsArray)
+        ButtonInfo("Array", false),
+        ButtonInfo("Dictionary", false),
+        ButtonInfo("File Handling", false),
+        ButtonInfo("Function", false),
+        ButtonInfo("Basic", false),
+        ButtonInfo("Exception Handling", false),
+        ButtonInfo("Formula",false),
+        ButtonInfo("Lists", false)
     )
     private fun setupSearchBar() {
         binding.apply {
@@ -221,6 +219,6 @@ class SearchSystemFromPrograms : Fragment() {
     }
     data class ButtonInfo(
         val name: String,
-        val actionId: Int
+        val actionId: Boolean
     )
 }

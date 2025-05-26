@@ -28,15 +28,28 @@
             android:id="@+id/profileBt"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="352dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="16dp"
             android:background="@null"
-
+            android:clickable="true"
+            android:focusable="true"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
+        <ImageButton
+            android:id="@+id/codeBt"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="44dp"
+            android:background="@null"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_code"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
@@ -71,7 +84,7 @@
                 android:background="@drawable/button_border_white"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="@string/programs"
+                android:text="Теория"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
 
@@ -88,7 +101,7 @@
                 android:background="@drawable/button_border_white"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="@string/cheats"
+                android:text="практика"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
 
@@ -105,7 +118,7 @@
                 android:background="@drawable/button_border_black"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="@string/description"
+                android:text="описание"
                 android:textColor="#000000"
                 android:textSize="11sp" />
 
@@ -115,20 +128,24 @@
             android:id="@+id/scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="#F6F0FF"
+            android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
             <TextView
-                android:id="@+id/content_text"
+                android:id="@+id/descriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION "
-                android:textColor="#000000"
-                android:textSize="14sp" />
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:textAlignment="viewStart"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:text="\t\t Добро пожаловать в «CodeBoost» – приложение, которое превращает изучение языка программирования Python в увлекательное и эффективное путешествие.\n\t\t\t• Теоретические модули. Каждый главный раздел (переменные и типы данных, управляющие конструкции, функции, модули и пакеты, работа с файлами, ООП и т. д.) изложен в виде понятных и концентрированных уроков.\n\t\t\t• Практические задания. После изучения теории вы перейдёте в раздел «Практика», где вас ждут упражнения разного уровня сложности. Решения снабжены подсказками и автоматической проверкой, чтобы вы сразу видели, где допущена ошибка, и учились на своём опыте.\n\t\t\t• Удобство и доступность. Всё обучение доступно офлайн: скачивайте уроки и решайте задачи в любом месте. А тёмная тема интерфейса сделает процесс комфортным в любое время суток.\n\t\t С «CodeBoost» вы не просто читаете теорию — вы создаёте работающий код, который сразу проверяется и оживает перед вашими глазами. Начните обучение сегодня и превратите ваши идеи в полноценные Python-программы!" />
+
+
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

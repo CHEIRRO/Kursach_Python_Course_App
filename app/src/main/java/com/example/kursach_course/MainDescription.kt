@@ -29,6 +29,9 @@ class MainDescription : Fragment() {
         binding.profileBt.setOnClickListener {
             findNavController().navigate(R.id.action_mainDescription_to_profile)
         }
+        binding.codeBt.setOnClickListener {
+            findNavController().navigate(R.id.action_mainDescription_to_writeCodeFragment)
+        }
     }
 
 }

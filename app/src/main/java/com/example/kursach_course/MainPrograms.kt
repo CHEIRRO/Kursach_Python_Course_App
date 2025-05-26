@@ -32,10 +32,7 @@ class MainPrograms : Fragment() {
         binding.searchButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainPrograms_to_searchSystemFromPrograms)
         }
-        binding.ArrayBt.setOnClickListener {
-            findNavController().navigate(R.id.action_mainPrograms_to_programsArray)
-        }
-        binding.BasicBt.setOnClickListener {
+        binding.codeBt.setOnClickListener {
             findNavController().navigate(R.id.action_mainPrograms_to_writeCode)
         }
     }
