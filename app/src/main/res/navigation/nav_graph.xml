@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_mainCheats_to_writeCodeFragment"
             app:destination="@id/writeCodeFragment" />
+        <action
+            android:id="@+id/action_mainCheats_to_pracWorkWithData"
+            app:destination="@id/pracWorkWithData" />
     </fragment>
     <fragment
         android:id="@+id/mainDescription"
@@ -171,6 +174,15 @@
         <action
             android:id="@+id/action_parIntroduction_to_ChapWelcomePython"
             app:destination="@id/ChapWelcomePython" />
+    </fragment>
+    <fragment
+        android:id="@+id/pracWorkWithData"
+        android:name="com.example.kursach_course.PracWorkWithData"
+        android:label="fragment_prac_work_with_data"
+        tools:layout="@layout/fragment_prac_work_with_data" >
+        <action
+            android:id="@+id/action_pracWorkWithData_to_mainCheats"
+            app:destination="@id/mainCheats" />
     </fragment>
 
 </navigation>

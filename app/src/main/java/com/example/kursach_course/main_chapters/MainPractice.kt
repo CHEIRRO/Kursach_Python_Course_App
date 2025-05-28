@@ -37,6 +37,9 @@ class MainPractice : Fragment() {
         binding.codeBt.setOnClickListener {
             findNavController().navigate(R.id.action_mainCheats_to_writeCodeFragment)
         }
+        binding.myButton6.setOnClickListener {
+            findNavController().navigate(R.id.action_mainCheats_to_pracWorkWithData)
+        }
 
         val settings = requireContext()
             .getSharedPreferences("AppSettings", Context.MODE_PRIVATE)

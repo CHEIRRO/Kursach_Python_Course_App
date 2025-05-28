@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pracWorkDataContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PracWorkWithData">
+
+    <!-- Toolbar с темой и кнопкой назад -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="@mipmap/ic_arrow_back"
+        app:titleTextColor="@color/black"
+        app:title="Работа с данными" />
+
+    <!-- Описание задания -->
+    <TextView
+        android:id="@+id/tvTaskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Дано список чисел. Напишите программу, которая находит сумму всех чётных чисел в списке и выводит результат."
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="16sp" />
+
+    <!-- Примеры входных и выходных данных -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Пример входных данных:\n[1, 2, 3, 4, 5, 6]"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Ожидаемый вывод:\n12"
+        android:textColor="?attr/colorOnBackground"
+        android:textSize="14sp"
+        android:paddingBottom="8dp" />
+
+    <!-- Раздел кода -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Номера строк -->
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:overScrollMode="always"
+            android:scrollbars="none">
+            <TextView
+                android:id="@+id/lineNumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="14sp" />
+        </ScrollView>
+
+        <!-- Редактор кода -->
+        <EditText
+
+            android:id="@+id/codeInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:drawable/edit_text"
+            android:gravity="start|top"
+            android:hint="Введите здесь код на Python..."
+            android:inputType="textMultiLine"
+            android:overScrollMode="always"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Кнопка выполнения и вывод -->
+    <Button
+        android:id="@+id/executeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Скомпилировать"
+        android:backgroundTint="?attr/colorPrimary"
+        android:textColor="?attr/colorOnPrimary" />
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="?attr/colorSurface"
+        android:padding="8dp"
+        android:text="Результат появится здесь..."
+        android:textColor="?attr/colorOnBackground" />
+
+</LinearLayout>
