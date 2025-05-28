@@ -10,4 +10,33 @@
     <color name="purple_200">#BB86FC</color>
     <color name="gray">#65646B</color>
     <color name="dark_background">#FF121212</color>
+    <!-- Фон и поверхности -->
+    <color name="background_light">#F6F0FF</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_dark">#1E1E1E</color>
+
+    <!-- Основная палитра -->
+    <color name="primary_light">#282828</color>
+    <color name="primary_dark">#BB86FC</color>
+    <color name="onPrimary_light">#FFFFFF</color>
+    <color name="onPrimary_dark">#000000</color>
+    <color name="secondary_light">#03DAC6</color>
+    <color name="secondary_dark">#03DAC6</color>
+    <color name="onSecondary_light">#000000</color>
+    <color name="onSecondary_dark">#000000</color>
+
+    <!-- Текст -->
+    <color name="textPrimary_light">#000000</color>
+    <color name="textPrimary_dark">#FFFFFF</color>
+    <color name="textSecondary_light">#757575</color>
+    <color name="textSecondary_dark">#B3B3B3</color>
+
+    <!-- Разделители -->
+    <color name="divider_light">#E0E0E0</color>
+    <color name="divider_dark">#373737</color>
+
+
+    <color name="button_back">#6C4675</color>
+    <color name="gray_back">#282828</color>
 </resources>

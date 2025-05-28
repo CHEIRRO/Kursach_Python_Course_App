@@ -26,12 +26,8 @@
 
         <!-- Цвет текста белый -->
         <item name="android:textColor">@color/white</item>
-
-        <!-- Цвет карточек серый -->
-        <item name="cardBackgroundColor">#B32E2E</item>
-
         <!-- Цвет иконок голубой -->
-        <item name="android:tint">#7B4EB1</item>
+        <item name="android:tint">#FFFFFF</item>
     </style>
 
     <style name="Theme.Kursach_course" parent="Base.Theme.Kursach_course" />

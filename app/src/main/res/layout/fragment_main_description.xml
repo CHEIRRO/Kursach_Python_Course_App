@@ -12,13 +12,13 @@
         android:layout_height="match_parent"
         android:backgroundTint="@color/black">
 
-        <ImageView
+        <View
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/back"
+            android:background="@drawable/back"
             app:layout_constraintDimensionRatio="412:192"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +128,6 @@
             android:id="@+id/scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

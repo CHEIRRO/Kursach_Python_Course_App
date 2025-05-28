@@ -20,11 +20,10 @@
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:background="@null"
         android:src="@mipmap/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@android:color/black" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/profileTitle"
@@ -33,7 +32,6 @@
         android:layout_marginStart="20dp"
         android:text="Профиль"
         android:textAppearance="@style/some_id"
-        android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/topBackground"
         app:layout_constraintStart_toEndOf="@+id/backButton"
@@ -50,17 +48,19 @@
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
+        android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBackground">
 
         <LinearLayout
+            android:id="@+id/profileCard2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="16dp"
+            android:background="@null"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="117dp">
 
@@ -83,7 +83,6 @@
                     android:id="@+id/profileName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -91,7 +90,6 @@
                     android:id="@+id/profileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:textColor="@android:color/darker_gray"
                     android:textSize="14sp" />
             </LinearLayout>

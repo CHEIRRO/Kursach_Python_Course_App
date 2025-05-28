@@ -14,7 +14,10 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kursach_course.R
@@ -29,6 +32,7 @@ class SearchSystemFromPrograms : Fragment() {
     private val maxHistorySize = 10
     private lateinit var sharedPreferences: SharedPreferences
     private var isSearchRunning = false
+    private var isDark = false
 
     private val searchRunnable = Runnable {
         performSearch(binding.searchEditText.text.toString())
@@ -39,13 +43,18 @@ class SearchSystemFromPrograms : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchSystemFromProgramsBinding.inflate(inflater, container, false)
-        binding = FragmentSearchSystemFromProgramsBinding.inflate(inflater)
+        binding = _binding!!
+
         sharedPreferences = requireContext().getSharedPreferences("SearchPrefs", Context.MODE_PRIVATE)
+        val settings = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
+        isDark = settings.getBoolean("isDarkTheme", false)
 
         setupSearchBar()
+        applyTheme(isDark)
 
         return binding.root
     }
+
     private val buttonList = listOf(
         ButtonInfo("Знакомство с python", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
         ButtonInfo("Работа с данными", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
@@ -53,21 +62,19 @@ class SearchSystemFromPrograms : Fragment() {
         ButtonInfo("Операции с числами", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
         ButtonInfo("Операции со строками", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
         ButtonInfo("Всё о циклах", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
-        ButtonInfo("Списки",R.id.action_searchSystemFromPrograms_to_parWelcomePython),
+        ButtonInfo("Списки", R.id.action_searchSystemFromPrograms_to_parWelcomePython),
         ButtonInfo("Функции", R.id.action_searchSystemFromPrograms_to_parWelcomePython)
     )
+
     private fun setupSearchBar() {
         binding.apply {
             searchEditText.setOnFocusChangeListener { _, hasFocus ->
-                if (hasFocus) {
-                    showSearchHistory()
-                }
+                if (hasFocus) showSearchHistory()
             }
             searchEditText.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                     val query = s.toString()
                     if (query.isNotEmpty()) {
-                        searchEditText.visibility = View.VISIBLE
                         clearButton.visibility = View.VISIBLE
                         handler.removeCallbacks(searchRunnable)
                         handler.postDelayed(searchRunnable, 2000)
@@ -75,6 +82,7 @@ class SearchSystemFromPrograms : Fragment() {
                         clearButton.visibility = View.GONE
                     }
                 }
+
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             })
@@ -83,9 +91,7 @@ class SearchSystemFromPrograms : Fragment() {
                     handler.removeCallbacks(searchRunnable)
                     performSearch(searchEditText.text.toString())
                     true
-                } else {
-                    false
-                }
+                } else false
             }
             searchEditText.setOnClickListener {
                 showSearchHistory()
@@ -103,6 +109,7 @@ class SearchSystemFromPrograms : Fragment() {
             }
         }
     }
+
     private fun performSearch(query: String) {
         if (query.isEmpty()) {
             showPlaceholderNoResults()
@@ -125,6 +132,7 @@ class SearchSystemFromPrograms : Fragment() {
             }
         }, 1500)
     }
+
     private fun showSearchResults(buttons: List<ButtonInfo>) {
         binding.resultContainer.removeAllViews()
         for (buttonInfo in buttons) {
@@ -139,12 +147,15 @@ class SearchSystemFromPrograms : Fragment() {
                 ).apply {
                     setMargins(16, 8, 16, 8)
                 }
+                setBackgroundResource(if (isDark) R.drawable.button_background_dark else R.drawable.button_background)
+                setTextColor(ContextCompat.getColor(requireContext(), if (isDark) R.color.white else R.color.black))
             }
             binding.resultContainer.addView(newButton)
         }
         binding.resultContainer.visibility = View.VISIBLE
         binding.placeholderLayout.visibility = View.GONE
     }
+
     private fun showPlaceholderNoResults() {
         binding.placeholderLayout.visibility = View.VISIBLE
         binding.placeholderText.text = getString(R.string.no_results_found)
@@ -152,6 +163,7 @@ class SearchSystemFromPrograms : Fragment() {
         binding.resultContainer.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
     }
+
     private fun showPlaceholderError() {
         binding.placeholderLayout.visibility = View.VISIBLE
         binding.placeholderText.text = getString(R.string.error_occurred)
@@ -159,10 +171,7 @@ class SearchSystemFromPrograms : Fragment() {
         binding.resultContainer.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
     }
-    private fun hideSearchResults() {
-        binding.resultContainer.removeAllViews()
-        binding.placeholderLayout.visibility = View.GONE
-    }
+
     private fun showSearchHistory() {
         val history = getSearchHistory()
         if (history.isNotEmpty()) {
@@ -175,11 +184,14 @@ class SearchSystemFromPrograms : Fragment() {
                         binding.searchEditText.setSelection(query.length)
                         performSearch(query)
                     }
+                    setBackgroundResource(if (isDark) R.drawable.button_background_dark else R.drawable.button_background)
+                    setTextColor(ContextCompat.getColor(requireContext(), if (isDark) R.color.white else R.color.black))
                 }
                 binding.historyContainer.addView(historyButton)
             }
         }
     }
+
     private fun saveToSearchHistory(query: String) {
         val history = getSearchHistory().toMutableList()
         history.remove(query)
@@ -189,27 +201,33 @@ class SearchSystemFromPrograms : Fragment() {
         }
         sharedPreferences.edit().putStringSet(searchHistoryKey, history.toSet()).apply()
     }
+
     private fun getSearchHistory(): List<String> {
         return sharedPreferences.getStringSet(searchHistoryKey, emptySet())?.toList() ?: emptyList()
     }
+
     private fun clearSearchHistory() {
         sharedPreferences.edit().remove(searchHistoryKey).apply()
         binding.historyContainer.removeAllViews()
     }
+
     private fun hideKeyboard() {
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
     }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("lastQuery", binding.searchEditText.text.toString())
         outState.putBoolean("isSearchRunning", isSearchRunning)
     }
+
     override fun onDestroyView() {
         handler.removeCallbacksAndMessages(null)
         _binding = null
         super.onDestroyView()
     }
+
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         savedInstanceState?.getString("lastQuery")?.let {
@@ -217,6 +235,38 @@ class SearchSystemFromPrograms : Fragment() {
             binding.searchEditText.setSelection(it.length)
             performSearch(it)
         }
+    }
+
+    private fun applyTheme(isDark: Boolean) {
+        val context = requireContext()
+
+        val backgroundColor = ContextCompat.getColor(context, if (isDark) R.color.gray_back else R.color.background_light)
+        val textColor = ContextCompat.getColor(context, if (isDark) R.color.white else R.color.black)
+        val hintColor = ContextCompat.getColor(context, if (isDark) R.color.gray else R.color.white)
+        val cardColor = ContextCompat.getColor(context, if (isDark) R.color.gray else R.color.white)
+        val buttonBackColor = ContextCompat.getColor(context, if (isDark) R.color.button_back else R.color.white)
+
+        // Фон всего фрагмента
+        binding.root.setBackgroundColor(backgroundColor)
+
+        // Карточка и поле ввода
+        binding.cardview.setCardBackgroundColor(cardColor)
+
+        binding.searchEditText.setTextColor(textColor)
+        binding.searchEditText.setHintTextColor(hintColor)
+
+        binding.ivSearch.setColorFilter(textColor)
+        binding.clearButton.setColorFilter(textColor)
+
+        // Placeholder
+        binding.placeholderText.setTextColor(textColor)
+
+        // Кнопки
+        binding.clearHistoryButton.setBackgroundColor(buttonBackColor)
+        binding.clearHistoryButton.setTextColor(textColor)
+
+        binding.retryButton.setBackgroundColor(buttonBackColor)
+        binding.retryButton.setTextColor(textColor)
     }
     data class ButtonInfo(
         val name: String,

@@ -14,13 +14,13 @@
         android:layout_height="match_parent"
         android:backgroundTint="@color/black">
 
-        <ImageView
+        <View
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/back"
+            android:background="@drawable/back"
             app:layout_constraintDimensionRatio="412:192"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -237,8 +237,8 @@
 
         <FrameLayout
             android:id="@+id/frameLayout"
-            android:layout_width="411dp"
-            android:layout_height="52dp"
+            android:layout_width="413dp"
+            android:layout_height="46dp"
             android:layout_marginTop="1dp"
             android:background="@color/back"
             app:layout_constraintEnd_toEndOf="parent"

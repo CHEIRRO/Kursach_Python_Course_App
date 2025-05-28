@@ -8,6 +8,7 @@
 
     <!-- Строка поиска -->
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="8dp"
@@ -17,6 +18,7 @@
         app:cardBackgroundColor="#F5F5F5">
 
         <LinearLayout
+            android:id="@+id/cardview2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"

@@ -1,5 +1,6 @@
 package com.example.kursach_course.applications
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ class Profile : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // User info
         val userPrefs = requireContext()
@@ -55,11 +57,6 @@ class Profile : Fragment() {
         // Theme switch (existing logic)
         val isDark = settings.getBoolean("isDarkTheme", true)
         binding.themeSwitch.isChecked = isDark
-        binding.profileCard.setCardBackgroundColor(
-            ContextCompat.getColorStateList(
-                requireContext(), if (isDark) R.color.gray else R.color.white
-            )
-        )
         binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
             settings.edit().putBoolean("isDarkTheme", isChecked).apply()
             requireActivity().setTheme(
@@ -67,5 +64,13 @@ class Profile : Fragment() {
             )
             requireActivity().recreate()
         }
+
+        val bgRoot = if (isDark) R.color.gray_back else R.color.background_light
+        binding.root.setBackgroundColor(ContextCompat.getColor(requireContext(), bgRoot))
+// Получаем цвет из ресурсов правильно
+        val bgCard = if (isDark) R.color.button_back else R.color.white
+        binding.profileCard2.setBackgroundColor(
+            ContextCompat.getColor(requireContext(), bgCard)
+        )
     }
 }
