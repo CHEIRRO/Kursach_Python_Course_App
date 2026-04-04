@@ -50,14 +50,12 @@ class RegistrationFragment : Fragment() {
                     if (response.isSuccessful) {
                         val body = response.body()!!
 
-                        // 1) Сохраняем токен
                         requireContext()
                             .getSharedPreferences("auth", Context.MODE_PRIVATE)
                             .edit()
                             .putString("token", body.token)
                             .apply()
 
-                        // 2) Сохраняем профиль в UserPrefs
                         requireContext()
                             .getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
                             .edit()
@@ -65,7 +63,6 @@ class RegistrationFragment : Fragment() {
                             .putString("USER_EMAIL", body.email)
                             .apply()
 
-                        // 3) Сохраняем текущий аккаунт в AppData
                         requireContext()
                             .getSharedPreferences("AppData", Context.MODE_PRIVATE)
                             .edit()
@@ -74,11 +71,10 @@ class RegistrationFragment : Fragment() {
                             .putString("USER_${body.email}_EMAIL", body.email)
                             .apply()
 
-                        // 4) Навигация
                         Toast.makeText(requireContext(), "Добро пожаловать, ${body.name}!", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_registrationFragment_to_mainPrograms)
                     }
- else {
+                    else {
                         Toast.makeText(requireContext(),"Ошибка регистрации: ${response.code()}", Toast.LENGTH_SHORT).show()
                     }
                 }

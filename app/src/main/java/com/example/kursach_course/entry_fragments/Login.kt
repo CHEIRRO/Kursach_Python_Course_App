@@ -44,7 +44,6 @@ class Login : Fragment() {
                         if (response.isSuccessful) {
                             val body = response.body()!!
 
-                            // === 1. Сохраняем данные профиля в UserPrefs (как у вас было) ===
                             val userPrefs = requireContext()
                                 .getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
                                 .edit()
@@ -53,19 +52,15 @@ class Login : Fragment() {
                                 .putString("USER_EMAIL", body.email)
                             userPrefs.apply()
 
-                            // === 2. Сохраняем текущий аккаунт в AppData ===
-                            //   этот email будет использоваться как префикс для флагов прохождения разделов
                             val appData = requireContext()
                                 .getSharedPreferences("AppData", Context.MODE_PRIVATE)
                                 .edit()
                             appData
                                 .putString("CURRENT_USER_EMAIL", body.email)
-                                // можно сразу скопировать туда же имя и почту под ключами с префиксом:
                                 .putString("USER_${body.email}_NAME", body.name)
                                 .putString("USER_${body.email}_EMAIL", body.email)
                             appData.apply()
 
-                            // 3. Тост и навигация
                             Toast.makeText(requireContext(),
                                 "Добро пожаловать, ${body.name}",
                                 Toast.LENGTH_SHORT).show()
@@ -76,7 +71,6 @@ class Login : Fragment() {
                                 Toast.LENGTH_SHORT).show()
                         }
                     }
-
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Toast.makeText(requireContext(),
                             "Ошибка подключения: ${t.localizedMessage}",

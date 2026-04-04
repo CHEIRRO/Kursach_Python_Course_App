@@ -30,7 +30,7 @@ object KtorRetrofitClient {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
-            .addConverterFactory(GsonConverterFactory.create(gson)) // Используем наш Gson с lenient
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(KtorApiService::class.java)
     }

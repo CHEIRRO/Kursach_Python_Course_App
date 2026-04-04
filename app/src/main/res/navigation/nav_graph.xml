@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/profile">
+    app:startDestination="@id/welcomFragment">
 
     <fragment
         android:id="@+id/welcomFragment"
@@ -151,8 +151,8 @@
         android:label="fragment_new_password_create"
         tools:layout="@layout/fragment_new_password_create" >
         <action
-            android:id="@+id/action_newPasswordCreate_to_mainPrograms"
-            app:destination="@id/mainPrograms" />
+            android:id="@+id/action_newPasswordCreate_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/ChapWelcomePython"

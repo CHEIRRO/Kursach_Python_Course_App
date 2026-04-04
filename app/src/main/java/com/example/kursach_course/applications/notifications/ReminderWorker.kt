@@ -1,3 +1,4 @@
+// ReminderWorker.kt
 package com.example.kursach_course.applications.notifications
 
 import android.app.PendingIntent
@@ -15,16 +16,18 @@ class ReminderWorker(
     params: WorkerParameters
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
-        val context = applicationContext
-        val mainIntent = Intent(context, MainActivity::class.java).apply {
+        val appContext = applicationContext
+        val mainIntent = Intent(appContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pIntent = PendingIntent.getActivity(
-            context, 0, mainIntent,
+            appContext,
+            0,
+            mainIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val notif = NotificationCompat.Builder(context, NotificationHelper.CHANNEL_ID)
+        val notif = NotificationCompat.Builder(appContext, NotificationHelper.CHANNEL_ID)
             .setSmallIcon(R.mipmap.ic_notifications)
             .setContentTitle("Напоминание от CodeBoost")
             .setContentText("Завтра нужно пройти следующий раздел.")
@@ -32,7 +35,7 @@ class ReminderWorker(
             .setAutoCancel(true)
             .build()
 
-        NotificationManagerCompat.from(context)
+        NotificationManagerCompat.from(appContext)
             .notify(1001, notif)
 
         return Result.success()

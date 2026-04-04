@@ -32,7 +32,6 @@ class ParIntroduction : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Слежение за касанием для простого свайпа вверх
         binding.bottomDetector.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -48,14 +47,12 @@ class ParIntroduction : Fragment() {
             true
         }
 
-        // Проверка теста
         binding.btnSubmit.setOnClickListener {
             val checkedId = binding.rgQuestion1.checkedRadioButtonId
             if (checkedId == R.id.option1_2) {
                 val sp = requireContext()
                     .getSharedPreferences("AppData", Context.MODE_PRIVATE)
                 val email = sp.getString("CURRENT_USER_EMAIL", "")!!
-                // Ключ с учётом аккаунта:
                 sp.edit()
                     .putBoolean("USER_${email}_SECTION1_DONE", true)
                     .apply()
@@ -66,9 +63,6 @@ class ParIntroduction : Fragment() {
                     Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
 
         binding.closeButton.setOnClickListener {
             findNavController().navigate(R.id.action_parIntroduction_to_ChapWelcomePython)

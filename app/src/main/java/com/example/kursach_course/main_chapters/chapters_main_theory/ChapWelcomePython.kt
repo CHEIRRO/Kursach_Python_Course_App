@@ -22,25 +22,19 @@ class ChapWelcomePython : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // 1) Навигация назад
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_ChapWelcomePython_to_mainPrograms)
         }
 
-        // 2) Получаем текущего пользователя
         val appData = requireContext()
             .getSharedPreferences("AppData", Context.MODE_PRIVATE)
         val email = appData.getString("CURRENT_USER_EMAIL", "")!!
 
-        // 3) Чтение флага с учётом аккаунта:
         val done1 = appData.getBoolean("USER_${email}_SECTION1_DONE", false)
 
-        // 4) Обновляем UI
         if (done1) {
-            // показываем галочку
             binding.card1.findViewById<ImageView>(R.id.checkIcon1)
                 .visibility = View.VISIBLE
-            // делаем вторую карточку доступной
             binding.card2.apply {
                 isClickable = true
                 isFocusable = true
@@ -52,7 +46,6 @@ class ChapWelcomePython : Fragment() {
             binding.card2.isClickable = false
         }
 
-        // 5) Навешиваем клики
         binding.card1.setOnClickListener {
             findNavController().navigate(R.id.action_ChapWelcomePython_to_parIntroduction)
         }

@@ -27,13 +27,11 @@ class Profile : Fragment() {
 
     @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // User info
         val userPrefs = requireContext()
             .getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         binding.profileName.text = userPrefs.getString("USER_NAME", "")
         binding.profileEmail.text = userPrefs.getString("USER_EMAIL", "")
 
-        // Notification switch
         val settings = requireContext()
             .getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
         val enabled = settings.getBoolean("notif_enabled", true)
@@ -46,7 +44,6 @@ class Profile : Fragment() {
             }
         }
 
-        // Back and logout
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_mainPrograms)
         }
@@ -54,7 +51,6 @@ class Profile : Fragment() {
             findNavController().navigate(R.id.action_profile_to_welcomFragment)
         }
 
-        // Theme switch (existing logic)
         val isDark = settings.getBoolean("isDarkTheme", true)
         binding.themeSwitch.isChecked = isDark
         binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -67,7 +63,6 @@ class Profile : Fragment() {
 
         val bgRoot = if (isDark) R.color.gray_back else R.color.background_light
         binding.root.setBackgroundColor(ContextCompat.getColor(requireContext(), bgRoot))
-// Получаем цвет из ресурсов правильно
         val bgCard = if (isDark) R.color.button_back else R.color.white
         binding.profileCard2.setBackgroundColor(
             ContextCompat.getColor(requireContext(), bgCard)

@@ -1,3 +1,4 @@
+// NotificationHelper.kt
 package com.example.kursach_course.applications.notifications
 
 import android.app.NotificationChannel
@@ -18,8 +19,8 @@ object NotificationHelper {
             ).apply {
                 description = "Канал для отложенных напоминаний"
             }
-
-            val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val manager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(channel)
         }
     }

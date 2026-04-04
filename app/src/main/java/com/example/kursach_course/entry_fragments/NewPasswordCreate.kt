@@ -88,7 +88,7 @@ class NewPasswordCreate : Fragment() {
 
     private fun navigateToHome() {
         Toast.makeText(requireContext(), "Пароль успешно изменен", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(R.id.action_newPasswordCreate_to_mainPrograms)
+        findNavController().navigate(R.id.action_newPasswordCreate_to_login)
     }
 
     private fun showError(message: String) {

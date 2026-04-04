@@ -25,7 +25,7 @@ import com.example.kursach_course.databinding.FragmentSearchSystemFromProgramsBi
 
 class SearchSystemFromPrograms : Fragment() {
     private var _binding: FragmentSearchSystemFromProgramsBinding? = null
-    private lateinit var binding: FragmentSearchSystemFromProgramsBinding
+    private val binding get() = _binding!!
     private var lastQuery: String? = null
     private val handler = Handler(Looper.getMainLooper())
     private val searchHistoryKey = "search_history"
@@ -43,8 +43,6 @@ class SearchSystemFromPrograms : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchSystemFromProgramsBinding.inflate(inflater, container, false)
-        binding = _binding!!
-
         sharedPreferences = requireContext().getSharedPreferences("SearchPrefs", Context.MODE_PRIVATE)
         val settings = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
         isDark = settings.getBoolean("isDarkTheme", false)
@@ -218,8 +216,10 @@ class SearchSystemFromPrograms : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("lastQuery", binding.searchEditText.text.toString())
-        outState.putBoolean("isSearchRunning", isSearchRunning)
+        _binding?.let {
+            outState.putString("lastQuery", it.searchEditText.text.toString())
+            outState.putBoolean("isSearchRunning", isSearchRunning)
+        }
     }
 
     override fun onDestroyView() {
@@ -242,29 +242,19 @@ class SearchSystemFromPrograms : Fragment() {
 
         val backgroundColor = ContextCompat.getColor(context, if (isDark) R.color.gray_back else R.color.background_light)
         val textColor = ContextCompat.getColor(context, if (isDark) R.color.white else R.color.black)
-        val hintColor = ContextCompat.getColor(context, if (isDark) R.color.gray else R.color.white)
+        val hintColor = ContextCompat.getColor(context, if (isDark) R.color.white else R.color.gray)
         val cardColor = ContextCompat.getColor(context, if (isDark) R.color.gray else R.color.white)
-        val buttonBackColor = ContextCompat.getColor(context, if (isDark) R.color.button_back else R.color.white)
+        val buttonBackColor = ContextCompat.getColor(context, if (isDark) R.color.button_back else R.color.purple_200)
 
-        // Фон всего фрагмента
         binding.root.setBackgroundColor(backgroundColor)
-
-        // Карточка и поле ввода
         binding.cardview.setCardBackgroundColor(cardColor)
-
         binding.searchEditText.setTextColor(textColor)
         binding.searchEditText.setHintTextColor(hintColor)
-
         binding.ivSearch.setColorFilter(textColor)
         binding.clearButton.setColorFilter(textColor)
-
-        // Placeholder
         binding.placeholderText.setTextColor(textColor)
-
-        // Кнопки
         binding.clearHistoryButton.setBackgroundColor(buttonBackColor)
         binding.clearHistoryButton.setTextColor(textColor)
-
         binding.retryButton.setBackgroundColor(buttonBackColor)
         binding.retryButton.setTextColor(textColor)
     }

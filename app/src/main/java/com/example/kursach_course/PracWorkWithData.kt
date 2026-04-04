@@ -69,5 +69,4 @@ class PracWorkWithData : Fragment() {
                 }
             })
     }
-
 }

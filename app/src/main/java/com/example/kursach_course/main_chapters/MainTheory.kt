@@ -49,13 +49,11 @@ class MainTheory : Fragment() {
             .getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
         val isDark = settings.getBoolean("isDarkTheme", false)
 
-        // фон корневого контейнера
         val bgRoot = if (isDark) R.color.gray_back else R.color.background_light
         binding.fragmentContainerView.setBackgroundColor(
             ContextCompat.getColor(requireContext(), bgRoot)
         )
 
-        // иконки и заголовок
         val iconTint = ContextCompat.getColor(
             requireContext(),
             if (isDark) R.color.white else R.color.black
@@ -64,13 +62,11 @@ class MainTheory : Fragment() {
         binding.codeBt.setColorFilter(iconTint)
         binding.titleText.setTextColor(iconTint)
 
-        // searchButton: иконка и текст
         val searchIcon = binding.searchButton.compoundDrawablesRelative[0]
         searchIcon?.setTint(iconTint)
         binding.searchButton.setCompoundDrawablesRelative(searchIcon, null, null, null)
         binding.searchButton.setTextColor(iconTint)
 
-        // фоны двух колонок и фрейма
         val layoutBg = ContextCompat.getColor(
             requireContext(),
             if (isDark) R.color.gray_back else R.color.background_light
@@ -79,7 +75,6 @@ class MainTheory : Fragment() {
         binding.linearLayout3.setBackgroundColor(layoutBg)
         binding.frameLayout.setBackgroundColor(layoutBg)
 
-        // кнопки в колонках — скруглённые drawables
         val btnTextColor = ContextCompat.getColor(
             requireContext(),
             if (isDark) R.color.white else R.color.black

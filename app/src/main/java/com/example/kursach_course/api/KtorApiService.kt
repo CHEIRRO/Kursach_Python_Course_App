@@ -7,7 +7,6 @@ import com.example.kursach_course.models.NewPasswordResponse
 import com.example.kursach_course.models.RegisterRequest
 import com.example.kursach_course.models.RegisterResponse
 import com.example.kursach_course.models.ResetCodeRequest
-import com.example.kursach_course.models.SimpleResponse
 import com.example.kursach_course.models.VerifyCodeRequest
 import retrofit2.Call
 import retrofit2.http.Body
