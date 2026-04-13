@@ -23,4 +23,8 @@ class AssignmentRepository(private val api: KtorApiService) {
         } catch (e: Exception) {
             null
         }
+
+    suspend fun getTopicsWithPractice(): List<TopicWithPracticeResponse> =
+        api.getTopicsWithPractice()
+
 }

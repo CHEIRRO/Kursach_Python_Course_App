@@ -89,6 +89,19 @@
                 android:text="Вывод появится здесь..."
                 android:textColor="?attr/colorOnSurface" />
 
+            <!-- Дополнительный TextView для отображения вердикта о правильности -->
+            <TextView
+                android:id="@+id/resultVerdict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:text="✅ Правильно!"
+                tools:visibility="visible" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

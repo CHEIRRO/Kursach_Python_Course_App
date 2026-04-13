@@ -4,6 +4,7 @@ import com.example.kursach_course.AssignmentResponse
 import com.example.kursach_course.ExtraAssignmentResponse
 import com.example.kursach_course.ProblematicResponse
 import com.example.kursach_course.ProgressRequest
+import com.example.kursach_course.TopicWithPracticeResponse
 import com.example.kursach_course.models.LoginRequest
 import com.example.kursach_course.models.LoginResponse
 import com.example.kursach_course.models.NewPasswordRequest
@@ -63,4 +64,8 @@ interface KtorApiService {
         @Query("email") email: String,
         @Query("assignmentId") assignmentId: Int
     ): ExtraAssignmentResponse
+
+    @GET("topics/practice")
+    suspend fun getTopicsWithPractice(): List<TopicWithPracticeResponse>
+
 }

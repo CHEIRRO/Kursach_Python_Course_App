@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomFragment">
+    app:startDestination="@id/mainPrograms">
 
     <fragment
         android:id="@+id/welcomFragment"
@@ -71,6 +71,9 @@
         <action
             android:id="@+id/action_mainCheats_to_pracWorkWithData"
             app:destination="@id/pracWorkWithData" />
+        <action
+            android:id="@+id/action_mainCheats_to_solveAssignmentFragment"
+            app:destination="@id/solveAssignmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainDescription"
