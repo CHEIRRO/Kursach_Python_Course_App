@@ -101,6 +101,9 @@
         <action
             android:id="@+id/action_profile_to_welcomFragment"
             app:destination="@id/welcomFragment" />
+        <action
+            android:id="@+id/action_profile_to_problematicTasksFragment"
+            app:destination="@id/problematicTasksFragment" />
     </fragment>
 
     <fragment
@@ -183,6 +186,41 @@
         <action
             android:id="@+id/action_pracWorkWithData_to_mainCheats"
             app:destination="@id/mainCheats" />
+    </fragment>
+    <fragment
+        android:id="@+id/problematicTasksFragment"
+        android:name="com.example.kursach_course.ProblematicTasksFragment"
+        android:label="ProblematicTasksFragment"
+        tools:layout="@layout/fragment_problematic_tasks">
+        <!-- действие для перехода к решению задания -->
+        <action
+            android:id="@+id/action_problematic_to_solveAssignment"
+            app:destination="@id/solveAssignmentFragment" />
+    </fragment>
+
+    <!-- фрагмент решения задания (общий для всех практических задач) -->
+    <fragment
+        android:id="@+id/solveAssignmentFragment"
+        android:name="com.example.kursach_course.SolveAssignmentFragment"
+        android:label="SolveAssignmentFragment"
+        tools:layout="@layout/fragment_solve_assignment">
+        <argument
+            android:name="assignment_id"
+            app:argType="integer" />
+        <argument
+            android:name="assignment_title"
+            app:argType="string" />
+        <argument
+            android:name="assignment_content"
+            app:argType="string" />
+        <argument
+            android:name="correct_answer"
+            app:argType="string"
+            android:defaultValue="@null" />
+        <!-- действие для перехода к дополнительному заданию (тот же фрагмент) -->
+        <action
+            android:id="@+id/action_to_extraAssignment"
+            app:destination="@id/solveAssignmentFragment" />
     </fragment>
 
 </navigation>

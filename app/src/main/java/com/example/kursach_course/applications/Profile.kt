@@ -51,6 +51,11 @@ class Profile : Fragment() {
             findNavController().navigate(R.id.action_profile_to_welcomFragment)
         }
 
+        // --- НОВЫЙ ОБРАБОТЧИК для кнопки "Сложные задания" ---
+        binding.problematicButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_to_problematicTasksFragment)
+        }
+
         val isDark = settings.getBoolean("isDarkTheme", true)
         binding.themeSwitch.isChecked = isDark
         binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
