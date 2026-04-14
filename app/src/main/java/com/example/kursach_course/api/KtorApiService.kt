@@ -1,9 +1,11 @@
 package com.example.kursach_course.api
 
+import com.example.kursach_course.Assignment
 import com.example.kursach_course.AssignmentResponse
 import com.example.kursach_course.ExtraAssignmentResponse
 import com.example.kursach_course.ProblematicResponse
 import com.example.kursach_course.ProgressRequest
+import com.example.kursach_course.Topic
 import com.example.kursach_course.TopicWithPracticeResponse
 import com.example.kursach_course.models.LoginRequest
 import com.example.kursach_course.models.LoginResponse
@@ -68,4 +70,12 @@ interface KtorApiService {
     @GET("topics/practice")
     suspend fun getTopicsWithPractice(): List<TopicWithPracticeResponse>
 
+    @GET("topics")
+    fun getTheoryTopics(): Call<List<Topic>>
+
+    @GET("topics/{topicId}/assignments")
+    fun getTheoryAssignments(@Path("topicId") topicId: Int): Call<List<Assignment>>
+
+    @GET("topics")
+    suspend fun getTheoryTopicsSuspend(): List<Topic>
 }

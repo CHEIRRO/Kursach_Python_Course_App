@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container_view"
-    android:name="com.example.kursach_course.MainPrograms"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F0FF"
@@ -14,18 +13,19 @@
         android:layout_height="match_parent"
         android:backgroundTint="@color/black">
 
+        <!-- Верхний декоративный фон -->
         <View
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
             android:background="@drawable/back"
+            android:scaleType="fitXY"
             app:layout_constraintDimensionRatio="412:192"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Кнопка профиля -->
         <ImageButton
             android:id="@+id/profileBt"
             android:layout_width="40dp"
@@ -38,6 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Кнопка кода (компилятор) -->
         <ImageButton
             android:id="@+id/codeBt"
             android:layout_width="40dp"
@@ -50,6 +51,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Заголовок "Python" -->
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
@@ -64,6 +66,7 @@
             app:layout_constraintStart_toStartOf="@id/imageView"
             app:layout_constraintTop_toTopOf="@id/imageView" />
 
+        <!-- Переключатель вкладок (Теория / Практика / Описание) -->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="379dp"
@@ -124,117 +127,9 @@
                 android:text="описание"
                 android:textColor="#FFFFFF"
                 android:textSize="11sp" />
-
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="207dp"
-            android:layout_height="637dp"
-            android:background="@color/back"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-            app:layout_constraintVertical_bias="0.0">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/WelcomePBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="Знакомство с \n python"
-                android:textColor="@android:color/black" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/SchoolMathBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="Школьная математика на python"
-                android:textColor="@android:color/black" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/StringBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="операции со строками"
-                android:textColor="@android:color/black" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/ListBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="списки"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="198dp"
-            android:layout_height="637dp"
-            android:background="#F6F0FF"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-            app:layout_constraintVertical_bias="0.0">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/DataBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="Работа с данными"
-                android:textColor="@android:color/black" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/NumbersBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="операции с \n числами"
-                android:textColor="@android:color/black" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/LoopBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="всё о циклах"
-                android:textColor="@android:color/black" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/FunctionsBt"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:text="функции"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
+        <!-- Строка поиска -->
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="413dp"
@@ -242,7 +137,6 @@
             android:layout_marginTop="1dp"
             android:background="@color/back"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
@@ -259,7 +153,26 @@
                 android:text="поиск"
                 android:textColor="#757575" />
         </FrameLayout>
+
+        <!-- Прокручиваемый контейнер для списка тем -->
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTopics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp" />
+
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
-
-
