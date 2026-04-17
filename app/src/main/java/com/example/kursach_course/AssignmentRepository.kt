@@ -31,4 +31,26 @@ class AssignmentRepository(private val api: KtorApiService) {
     suspend fun getSubtopicsByTopic(topicId: Int, email: String): List<SubtopicResponse> {
         return api.getSubtopicsByTopic(topicId, email)
     }
+
+    suspend fun getAssignmentBySubtopic(subtopicId: Int) =
+        api.getAssignmentBySubtopic(subtopicId)
+
+    suspend fun completeSubtopic(email: String, subtopicId: Int) =
+        api.completeSubtopic(subtopicId, email)
+
+
+    suspend fun getHelpForAssignment(assignmentId: Int): AssignmentHelpResponse =
+        api.getHelpForAssignment(assignmentId)
+
+    suspend fun getExtraAssignmentById(extraId: Int): ExtraAssignmentResponse =
+        api.getExtraAssignmentById(extraId)
+
+
+
+
+
+
+
+
+
 }

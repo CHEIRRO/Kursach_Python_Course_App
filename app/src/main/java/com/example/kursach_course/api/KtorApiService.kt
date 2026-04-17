@@ -1,6 +1,7 @@
 package com.example.kursach_course.api
 
 import com.example.kursach_course.Assignment
+import com.example.kursach_course.AssignmentHelpResponse
 import com.example.kursach_course.AssignmentResponse
 import com.example.kursach_course.ExtraAssignmentResponse
 import com.example.kursach_course.ProblematicResponse
@@ -85,4 +86,24 @@ interface KtorApiService {
         @Path("topicId") topicId: Int,
         @Query("email") email: String?
     ): List<SubtopicResponse>
+
+    @GET("subtopics/{subtopicId}/assignment")
+    suspend fun getAssignmentBySubtopic(
+        @Path("subtopicId") subtopicId: Int
+    ): AssignmentResponse?
+
+    @POST("subtopics/{subtopicId}/complete")
+    suspend fun completeSubtopic(
+        @Path("subtopicId") subtopicId: Int,
+        @Query("email") email: String
+    ): Map<String, String>
+    @GET("assignments/{assignmentId}/help")
+    suspend fun getHelpForAssignment(
+        @Path("assignmentId") assignmentId: Int
+    ): AssignmentHelpResponse
+    @GET("extra-assignments/{extraId}")
+    suspend fun getExtraAssignmentById(
+        @Path("extraId") extraId: Int
+    ): ExtraAssignmentResponse
+
 }

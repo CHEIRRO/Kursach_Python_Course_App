@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,45 +10,81 @@
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Название задания -->
         <TextView
             android:id="@+id/titleText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Привет, мир!" />
+            tools:text="Hello World" />
 
+        <!-- Тема -->
         <TextView
             android:id="@+id/topicText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textSize="14sp"
             android:textColor="?attr/colorOnSurfaceVariant"
-            app:layout_constraintTop_toBottomOf="@id/titleText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Основы Python" />
+            tools:text="Вывод текста" />
 
+        <!-- Попыток -->
         <TextView
             android:id="@+id/attemptsText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:textSize="14sp"
             android:textColor="#FF0000"
-            app:layout_constraintTop_toBottomOf="@id/topicText"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Попыток: 3" />
+            tools:text="Попыток: 5" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Разделитель -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="?attr/colorSurfaceVariant" />
+
+        <!-- Кнопка: повторить задание -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRetry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="▶ Попробовать снова"
+            android:textSize="13sp"
+            app:backgroundTint="#7B1FA2"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <!-- Кнопка: повторить теорию -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTheory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="📖 Повторить теорию"
+            android:textSize="13sp"
+            app:backgroundTint="#4A148C"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <!-- Кнопка: похожая задача -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExtra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="🔁 Похожая задача"
+            android:textSize="13sp"
+            app:backgroundTint="#1565C0"
+            style="@style/Widget.MaterialComponents.Button" />
+
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

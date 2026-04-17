@@ -199,6 +199,13 @@
         <action
             android:id="@+id/action_problematic_to_solveAssignment"
             app:destination="@id/solveAssignmentFragment" />
+
+        <action
+            android:id="@+id/action_problematicTasksFragment_to_solveAssignmentFragment"
+            app:destination="@id/solveAssignmentFragment" />
+        <action
+            android:id="@+id/action_problematicTasksFragment_to_ChapWelcomePython"
+            app:destination="@id/ChapWelcomePython" />
     </fragment>
 
     <!-- фрагмент решения задания (общий для всех практических задач) -->
