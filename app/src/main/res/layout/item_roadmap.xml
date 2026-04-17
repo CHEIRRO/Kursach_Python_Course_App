@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Номер темы в кружке -->
+        <TextView
+            android:id="@+id/tvTopicNumber"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_topic_number"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Название темы -->
+        <TextView
+            android:id="@+id/tvTopicTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Знакомство с Python"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTopicNumber"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Иконка статуса (пройдено/не пройдено) -->
+
+        <!--<ImageView
+            android:id="@+id/ivStatus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/ic_lock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />-->
+
+        <!-- Линия-соединитель (видна только между карточками) -->
+        <View
+            android:id="@+id/viewConnector"
+            android:layout_width="2dp"
+            android:layout_height="32dp"
+            android:background="@color/purple_500"
+            app:layout_constraintStart_toStartOf="@+id/tvTopicNumber"
+            app:layout_constraintEnd_toEndOf="@+id/tvTopicNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvTopicNumber"
+            app:layout_constraintBottom_toTopOf="@+id/tvTopicNumber"
+            android:layout_marginTop="?attr/actionBarSize" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -3,4 +3,5 @@
     <dimen name="medium_text">18dp</dimen>
     <dimen name="large_text">28dp</dimen>
     <dimen name="auth_reg">32dp</dimen>
+    <dimen name="card_height_90">90dp</dimen>
 </resources>

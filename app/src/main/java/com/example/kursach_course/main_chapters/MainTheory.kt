@@ -2,17 +2,15 @@ package com.example.kursach_course.main_chapters
 
 import android.content.Context
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kursach_course.R
 import com.example.kursach_course.Topic
 import com.example.kursach_course.api.KtorRetrofitClient
@@ -22,6 +20,8 @@ import kotlinx.coroutines.launch
 class MainTheory : Fragment() {
 
     private lateinit var binding: FragmentMainTheoryBinding
+    private lateinit var roadmapAdapter: RoadmapAdapter
+    private var topicsList: List<Topic> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,62 +60,36 @@ class MainTheory : Fragment() {
     private fun loadTheoryTopics() {
         lifecycleScope.launch {
             try {
-                // Используем suspend-функцию (добавьте её в KtorApiService, если ещё нет)
                 val topics = KtorRetrofitClient.authService.getTheoryTopicsSuspend()
-                createTopicButtons(topics)
+                topicsList = topics
+                val completedIds = getCompletedTopics() // пока пустой, потом реализуешь
+                setupRecyclerView(topics, completedIds)
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Ошибка загрузки тем: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun createTopicButtons(topics: List<Topic>) {
-        binding.linearLayoutTopics.removeAllViews()
-
-        val settings = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
-        val isDark = settings.getBoolean("isDarkTheme", false)
-        val btnTextColor = ContextCompat.getColor(
-            requireContext(),
-            if (isDark) R.color.white else R.color.black
-        )
-        val btnBg = if (isDark) R.drawable.button_background_dark else R.drawable.button_background
-
-        for (topic in topics) {
-            val button = AppCompatButton(requireContext()).apply {
-                text = topic.title
-                layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply {
-                    setMargins(16, 8, 16, 8)
-                }
-                setBackgroundResource(btnBg)
-                setTextColor(btnTextColor)
-                // Иконка стрелки справа
-                setCompoundDrawablesWithIntrinsicBounds(
-                    null, null,
-                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_right),
-                    null
-                )
-                compoundDrawablePadding = 24
-                gravity = Gravity.CENTER_VERTICAL or Gravity.START
-                minHeight = 72
-                setPadding(32, 0, 32, 0)
-                id = View.generateViewId()
-                setOnClickListener {
-                    openTopicAssignments(topic)
-                }
-            }
-            binding.linearLayoutTopics.addView(button)
+    private fun setupRecyclerView(topics: List<Topic>, completedIds: Set<Int>) {
+        roadmapAdapter = RoadmapAdapter(topics, completedIds) { topic ->
+            openTopicAssignments(topic)
         }
+        binding.rvRoadmap.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = roadmapAdapter
+        }
+    }
+
+    private fun getCompletedTopics(): Set<Int> {
+        // Пока возвращаем пустой набор. Позже можно загружать с сервера или из SharedPreferences
+        return emptySet()
     }
 
     private fun openTopicAssignments(topic: Topic) {
         val bundle = Bundle().apply {
-            putInt("topicId", topic.topicId)
-            putString("topicTitle", topic.title)
+            putInt("topic_id", topic.topicId)        // было topicId
+            putString("topic_title", topic.title)     // было topicTitle
         }
-        // Убедитесь, что в nav_graph.xml есть это действие
         findNavController().navigate(R.id.action_mainPrograms_to_ChapWelcomePython, bundle)
     }
 
@@ -141,12 +115,15 @@ class MainTheory : Fragment() {
         binding.searchButton.setCompoundDrawablesRelative(searchIcon, null, null, null)
         binding.searchButton.setTextColor(iconTint)
 
-        val layoutBg = ContextCompat.getColor(
-            requireContext(),
-            if (isDark) R.color.gray_back else R.color.background_light
+        // Фон для RecyclerView (можно установить его родителю)
+        binding.rvRoadmap.setBackgroundColor(
+            ContextCompat.getColor(requireContext(),
+                if (isDark) R.color.gray_back else R.color.background_light)
         )
-        binding.linearLayoutTopics.setBackgroundColor(layoutBg)
-        binding.frameLayout.setBackgroundColor(layoutBg)
+        binding.frameLayout.setBackgroundColor(
+            ContextCompat.getColor(requireContext(),
+                if (isDark) R.color.gray_back else R.color.background_light)
+        )
 
         val btnTextColor = ContextCompat.getColor(
             requireContext(),

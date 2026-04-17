@@ -27,4 +27,8 @@ class AssignmentRepository(private val api: KtorApiService) {
     suspend fun getTopicsWithPractice(): List<TopicWithPracticeResponse> =
         api.getTopicsWithPractice()
 
+
+    suspend fun getSubtopicsByTopic(topicId: Int, email: String): List<SubtopicResponse> {
+        return api.getSubtopicsByTopic(topicId, email)
+    }
 }

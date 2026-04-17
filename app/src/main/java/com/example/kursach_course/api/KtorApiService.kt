@@ -5,6 +5,7 @@ import com.example.kursach_course.AssignmentResponse
 import com.example.kursach_course.ExtraAssignmentResponse
 import com.example.kursach_course.ProblematicResponse
 import com.example.kursach_course.ProgressRequest
+import com.example.kursach_course.SubtopicResponse
 import com.example.kursach_course.Topic
 import com.example.kursach_course.TopicWithPracticeResponse
 import com.example.kursach_course.models.LoginRequest
@@ -78,4 +79,10 @@ interface KtorApiService {
 
     @GET("topics")
     suspend fun getTheoryTopicsSuspend(): List<Topic>
+
+    @GET("topics/{topicId}/subtopics")
+    suspend fun getSubtopicsByTopic(
+        @Path("topicId") topicId: Int,
+        @Query("email") email: String?
+    ): List<SubtopicResponse>
 }
