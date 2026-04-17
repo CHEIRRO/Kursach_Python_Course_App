@@ -45,7 +45,9 @@ class AssignmentRepository(private val api: KtorApiService) {
     suspend fun getExtraAssignmentById(extraId: Int): ExtraAssignmentResponse =
         api.getExtraAssignmentById(extraId)
 
-
+    suspend fun getUserRating(email: String): Int {
+        return api.getUserRating(email)["rating"] ?: 5
+    }
 
 
 

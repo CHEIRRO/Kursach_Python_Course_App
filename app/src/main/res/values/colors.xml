@@ -39,4 +39,9 @@
 
     <color name="button_back">#6C4675</color>
     <color name="gray_back">#282828</color>
+
+
+    <color name="green_rating">#4CAF50</color>
+    <color name="amber_rating">#FF9800</color>
+    <color name="red_rating">#F44336</color>
 </resources>

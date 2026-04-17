@@ -105,5 +105,12 @@ interface KtorApiService {
     suspend fun getExtraAssignmentById(
         @Path("extraId") extraId: Int
     ): ExtraAssignmentResponse
+    @GET("user/rating")
+    suspend fun getUserRating(
+        @Query("email") email: String
+    ): Map<String, Int>
+
+
+
 
 }
